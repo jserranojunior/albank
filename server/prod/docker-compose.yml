@@ -16,7 +16,7 @@ services:
     networks:
       - internal
     ports:
-      - "3080:5000"
+      - "3180:5000"
     labels:
       - "traefik.enable=true"
       - traefik.http.routers.frontalbank.rule=Host(`albank.alvitre.com.br`)
