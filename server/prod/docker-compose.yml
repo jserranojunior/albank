@@ -1,0 +1,22 @@
+version: "2"
+
+networks:
+  internal:
+    driver: bridge
+
+  frontend_albank:
+    container_name: "frontend_albank"
+    image: "node:lts-alpine"
+    restart: always
+    working_dir: /app
+    volumes:
+      - "../../front:/app"
+    command: "yarn serve"
+    networks:
+      - internal
+    ports:
+      - "3080:5000"
+    labels:
+      - "traefik.enable=true"
+      - traefik.http.routers.frontalbank.rule=Host(`albank.alvitre.com.br`)
+      - traefik.http.services.frontalbank.loadbalancer.server.port=5000
