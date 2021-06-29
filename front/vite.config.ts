@@ -15,7 +15,7 @@ export default ({ command }) => {
       server: {
         host: "0.0.0.0",
         port: 3000,
-        hmr: { host: "allbank.localhost", port: 80 },
+        hmr: { host: "albank.localhost", port: 80 },
       },
     };
   } else {
