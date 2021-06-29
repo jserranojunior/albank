@@ -1,5 +1,5 @@
 <template>
-  <div class="fex flex-wrap justify-center mt-80">
+  <div class="fex flex-wrap justify-center mt-60">
     <div class="w-full sm:w-full md:w-1/3 lg:w-1/4 mx-auto">
       <div class="flex flex-wrap margin-bottom-4 margin-topo justify-center">
         <div class="w-full text-center">
