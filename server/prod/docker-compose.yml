@@ -4,6 +4,7 @@ networks:
   internal:
     driver: bridge
 
+services:
   frontend_albank:
     container_name: "frontend_albank"
     image: "node:lts-alpine"
