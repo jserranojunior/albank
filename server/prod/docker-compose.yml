@@ -5,10 +5,9 @@ networks:
     driver: bridge
 
 services:
-  frontend_albank:
-    container_name: "frontend_albank"
+  albank:
+    container_name: "albank"
     image: "node:lts-alpine"
-    restart: always
     working_dir: /app
     volumes:
       - "../../front:/app"
