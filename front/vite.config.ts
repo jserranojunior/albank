@@ -2,8 +2,6 @@
 import vue from "@vitejs/plugin-vue";
 import envCompatible from "vite-plugin-env-compatible";
 
-
-
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
 export default ({ command }) => {
   if (command === "serve") {
@@ -15,7 +13,7 @@ export default ({ command }) => {
       server: {
         host: "0.0.0.0",
         port: 3000,
-        hmr: { host: "albank.localhost", port: 80 },
+        hmr: { host: "frontalbank.localhost", port: 80 },
       },
     };
   } else {
@@ -36,4 +34,3 @@ export default ({ command }) => {
     };
   }
 };
-

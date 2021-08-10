@@ -1,24 +1,29 @@
-
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router";
 
 import { AuthMiddleware } from "./middlewares/AuthMiddleware";
 const { auth } = AuthMiddleware();
 
 import Home from "../modules/institucional/home.vue";
+import Cadastro from "../modules/institucional/cadastro.vue";
 import FinanceiroIndex from "../modules/financeiro/pages/FinanceiroIndex.vue";
 import AdicionarConta from "../modules/financeiro/pages/AdicionarConta.vue";
 import EditarConta from "../modules/financeiro/pages/EditarConta.vue";
-import NotFound from "../views/layouts/NotFound.vue"
+import NotFound from "../views/layouts/NotFound.vue";
 import Login from "../modules/auth/pages/Login.vue";
 
 const routes = [
-  { path: '/:pathMatch(.*)*', name: 'NotFound', component: NotFound },
+  { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
   {
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/cadastro",
+    name: "Cadastro",
+    component: Cadastro,
   },
   {
     path: "/login",
@@ -26,11 +31,7 @@ const routes = [
     component: Login,
     beforeEnter: [auth],
   },
-  {
-    path: "/cadastro",
-    name: "Cadastro",
-    component: Home,
-  },
+
   {
     path: "/financeiro",
     name: "Financeiro",
@@ -54,6 +55,5 @@ const router = createRouter({
   history: createWebHistory(),
   routes,
 });
-
 
 export default router;

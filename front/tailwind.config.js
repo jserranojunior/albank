@@ -5,6 +5,11 @@ module.exports = {
   darkMode: "class",
   theme: {
     colors: {
+      albank: {
+        1: "#004080",
+        2: "#f8981d",
+        3: "#fdf100",
+      },
       gray: {
         50: "#f8f9f8",
         100: "#edf1f3",

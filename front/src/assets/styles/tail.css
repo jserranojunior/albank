@@ -91,26 +91,26 @@
 }
 
 .btn-primary-tail {
-  @apply bg-blue-700 text-white font-bold py-1 px-2 rounded cursor-pointer text-center;
+  @apply bg-albank-1 text-white font-bold py-1 px-2 rounded cursor-pointer text-center;
 }
 
 .btn-primary-tail:hover {
-  @apply bg-blue-800 text-white;
+  @apply bg-blue-700 text-white;
 }
 .btn-success-tail {
-  @apply bg-green-700 text-white font-bold py-1 px-2 rounded cursor-pointer text-center;
+  @apply bg-green-600 text-white font-bold py-1 px-2 rounded cursor-pointer text-center;
 }
 
 .btn-success-tail:hover {
-  @apply bg-green-800 text-white;
+  @apply bg-green-700 text-white;
 }
 
 .btn-warning-tail {
-  @apply bg-yellow-700 text-white font-bold py-1 px-2 rounded cursor-pointer text-center;
+  @apply bg-albank-2 text-white font-bold py-1 px-2 rounded cursor-pointer text-center;
 }
 
 .btn-warning-tail:hover {
-  @apply bg-yellow-800 text-white;
+  @apply bg-yellow-700 text-white;
 }
 
 .btn-danger-tail {

@@ -4,12 +4,13 @@ import { toRefs, reactive } from "vue";
 export const useInstitucional = () => {
   const state = reactive({
     // logo: import("@/assets/imgs/union-bank-logo.png"),
-        bgImagem: "",
+    bgImagem: "",
     mobile: false,
     linkWhatsApp: "https://web.whatsapp.com/send?phone=5511998068930",
-
-
- });
+    registerInputs: {
+      type: "",
+    },
+  });
 
   async function isMobile() {
     const userAgent = navigator.userAgent.toLowerCase();
@@ -24,5 +25,5 @@ export const useInstitucional = () => {
     }
   }
 
-  return { ...toRefs(state), isMobile};
+  return { ...toRefs(state), isMobile };
 };
