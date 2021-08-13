@@ -1,0 +1,22 @@
+version: "3"
+
+networks:
+  stack_ponte:
+    external: true
+
+services:
+  frontend_albank:
+    container_name: "frontend_albank"
+    image: "node:lts-alpine"
+    working_dir: /app
+    volumes:
+      - "${APPPATH}/front:/app"
+    command: "yarn dev"
+    networks:
+      - stack_ponte
+    ports:
+      - "3090:3000"
+    labels:
+      - "traefik.enable=true"
+      - traefik.http.routers.frontalbank.rule=Host(`frontalbank.${DOMAIN}`)
+      - traefik.http.services.frontalbank.loadbalancer.server.port=3000

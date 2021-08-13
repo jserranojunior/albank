@@ -1,49 +1,49 @@
 <template>
-  <div class="mt-60">
-    <div class="flex justify-center">
-      <div class="w-auto text-center">
-        <img
-          class="img-fluid"
-          width="100"
-          src="../../assets/img/logo_albank.jpeg"
-          alt=""
-        />
-      </div>
-    </div>
-    <div class="flex flex-wrap justify-center mt-2">
-      <div class="w-1/4 painel">
-        <div class="painel-header font-bold">CADASTRO INICIAL</div>
-        <div class="painel-body">
-          <input
-            v-model="registerInputs.name"
-            class="form-tail mt-1"
-            placeholder="Nome"
-          />
-          <input
-            v-model="registerInputs.middlename"
-            class="form-tail mt-1"
-            placeholder="Sobrenome"
-          />
-          <input
-            v-model="registerInputs.cellphone"
-            class="form-tail mt-1"
-            placeholder="Celular"
-          />
-          <select v-model="registerInputs.type" class="form-tail mt-1 cursor-pointer">
-            <option disabled value="">Quero ser</option>
-            <option value="1">Cliente</option>
-            <option value="2">Sócio</option>
-            <option value="3">Agente de negócios</option>
-          </select>
-          <div class="btn-warning-tail mt-1">Enviar</div>
-        </div>
-      </div>
+  <div class="text-white text-center">
+    <div class="font-bold text-2xl mt-4">Cadastre-se</div>
+    <div class="mt-2">
+      <input
+        v-model="registerInputs.name"
+        class="form-tail mt-1"
+        placeholder="Nome Completo"
+      />
+
+      <input
+        v-model="registerInputs.cellphone"
+        class="form-tail mt-2"
+        placeholder="Telefone/Whatsapp ( ) 00000-0000"
+      />
+      <input
+        v-model="registerInputs.dtnascimento"
+        class="form-tail mt-2"
+        placeholder="Data de nascimento    /  /"
+      />
+      <input
+        type="email"
+        v-model="registerInputs.email"
+        class="form-tail mt-2"
+        placeholder="E-mail"
+      />
+      <input
+        type="password"
+        v-model="registerInputs.pass"
+        class="form-tail mt-2"
+        placeholder="Crie sua senha"
+      />
+      <input
+        type="password"
+        v-model="registerInputs.confirmPass"
+        class="form-tail mt-2"
+        placeholder="Confirme sua senha"
+      />
+
+      <div class="btn-warning-tail mt-4">Enviar</div>
     </div>
   </div>
 </template>
 
 <script>
-import { inject, onBeforeMount } from "vue";
+import { inject } from "vue";
 export default {
   setup() {
     const useInstitucional = inject("institucional");

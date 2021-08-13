@@ -62,7 +62,7 @@
 }
 
 .form-tail {
-  @apply appearance-none border rounded w-full py-2 px-2 text-gray-700 leading-tight bg-white;
+  @apply appearance-none border w-full py-1 px-2 text-gray-700 leading-tight bg-white text-sm;
 }
 .form-tail:focus {
   @apply outline-none shadow;

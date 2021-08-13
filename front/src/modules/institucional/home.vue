@@ -1,6 +1,6 @@
 <template>
-  <div class="fex flex-wrap justify-center mt-60">
-    <div class="w-full sm:w-full md:w-1/4 lg:w-1/5 mx-auto">
+  <div class="flex flex-wrap justify-center mt-20">
+    <div class="w-full sm:w-full md:w-1/3 lg:w-1/4 mx-auto px-6">
       <div class="flex flex-wrap margin-bottom-4 margin-topo justify-center">
         <div class="w-auto text-center">
           <img
@@ -11,29 +11,33 @@
           />
         </div>
       </div>
-      <div class="flex flex-wrap row-space justify-center">
-        <!-- <div class="w-full sm:1/2 md:1/3 lg:1/4 col-ja-tenho-conta mt-4">
-          <router-link to="/">
-            <div class="btn-success-tail btn-outline-light w-full font-weight-bold">
-              JA SOU ALBANK
-            </div>
-          </router-link>
-        </div> -->
-        <div class="w-full sm:1/3 md:1/4 lg:1/5 mt-6">
-          <router-link to="/cadastro">
-            <div class="btn-warning-tail btn-outline-light w-full font-weight-bold">
-              QUERO SER ALBANK
-            </div>
-          </router-link>
-        </div>
-      </div>
+      <Login></Login>
+      <Cadastro></Cadastro>
 
       <div class="flex flex-wrap row-space justify-center mt-4">
-        <div class="col-4 col-xs-4 col-sm-4 col-md-1 col-lg-1 text-center">
-          <div class="icon-social text-primary text-3xl text-green-600">
+        <div class="w-auto text-center mr-8">
+          <div class="icon-social text-primary text-3xl text-white">
             <a target="_blank" :href="linkWhatsApp">
               <h5>
                 <i class="bg-white-social fab fa-whatsapp"></i>
+              </h5>
+            </a>
+          </div>
+        </div>
+        <div class="w-auto text-center mr-8">
+          <div class="icon-social text-primary text-3xl text-white">
+            <a target="_blank" :href="linkWhatsApp">
+              <h5>
+                <i class="bg-white-social fab fa-facebook-f"></i>
+              </h5>
+            </a>
+          </div>
+        </div>
+        <div class="w-auto text-center mr-8">
+          <div class="icon-social text-primary text-3xl text-white">
+            <a target="_blank" :href="linkWhatsApp">
+              <h5>
+                <i class="bg-white-social fas fa-map-marker-alt"></i>
               </h5>
             </a>
           </div>
@@ -45,8 +49,14 @@
 
 <script>
 import { inject, onBeforeMount } from "vue";
+import Cadastro from "./cadastro.vue";
+import Login from "./login.vue";
 export default {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
+  components: {
+    Cadastro,
+    Login,
+  },
   setup() {
     const useInstitucional = inject("institucional");
     const { bgImagem, mobile, linkWhatsApp, isMobile } = useInstitucional;
@@ -63,13 +73,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-/* .wallpaper {
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-} */
-</style>

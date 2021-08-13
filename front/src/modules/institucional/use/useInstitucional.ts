@@ -10,6 +10,7 @@ export const useInstitucional = () => {
     registerInputs: {
       type: "",
     },
+    loginInputs: {},
   });
 
   async function isMobile() {

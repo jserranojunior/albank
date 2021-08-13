@@ -1,0 +1,22 @@
+version: "3"
+
+networks:
+  stack_ponte:
+    external: true
+
+services:
+  frontend_albank_prod:
+    container_name: "frontend_albank_prod"
+    image: "webdevops/apache:latest"
+    restart: always
+    working_dir: /app
+    volumes:
+      - ${APPPATH}/front/dist:/app
+    networks:
+      - stack_ponte
+    ports:
+      - "85:80"
+    labels:
+      - "traefik.enable=true"
+      - traefik.http.routers.frontintellect.rule=Host(`albank.${DOMAIN}`)
+      - traefik.http.services.frontintellect.loadbalancer.server.port=80
