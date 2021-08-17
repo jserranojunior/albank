@@ -15,7 +15,7 @@ services:
     networks:
       - stack_ponte
     ports:
-      - "85:80"
+      - "8778:80"
     labels:
       - "traefik.enable=true"
       - traefik.http.routers.frontintellect.rule=Host(`albank.${DOMAIN}`)
