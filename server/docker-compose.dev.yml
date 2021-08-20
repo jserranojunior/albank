@@ -20,3 +20,19 @@ services:
       - "traefik.enable=true"
       - traefik.http.routers.frontalbank.rule=Host(`frontalbank.${DOMAIN}`)
       - traefik.http.services.frontalbank.loadbalancer.server.port=3000
+
+  albank_back:
+    image: golang:1.16.3
+    container_name: "albank_back"
+    networks:
+      - stack_ponte
+    ports:
+      - "5081:8000"
+    volumes:
+      - "${APPPATH}/back:/app"
+      - "${GOPATH}:/go"
+    command: "/bin/sh -c 'cd /app && reflex -c /app/reflex.conf'"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backalbank.rule=Host(`backalbank.${DOMAIN}`)"
+      - "traefik.http.services.backalbank.loadbalancer.server.port=8000"
