@@ -2,21 +2,79 @@ package handlers
 
 import (
 	"fmt"
-	"time"
+	"net/http"
 
 	"github.com/gin-gonic/gin"
 	"github.com/jserranojunior/intellect/backgo/models"
+	"golang.org/x/crypto/bcrypt"
 )
+
+func GetUser(c *gin.Context) {
+	var user models.User
+	tokenID := c.GetUint("id")
+
+	res := DB.First(&user, tokenID)
+
+	if res.Error != nil {
+		c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{
+			"message": "Não há usuario cadastrado com esse token",
+			"err":     res.Error,
+			"id":      user.ID,
+		})
+		return
+	}
+	user.Password = ""
+	c.JSON(200, gin.H{
+		"data": &user,
+	})
+}
 
 // UserCreate a user controllers
 func UserCreate(c *gin.Context) {
-	fmt.Println("AQUI")
-	user := models.User{Name: "Jack", Email: "jorgeserraojuniorra@hotmail.com", Password: "123", Cellphone: "(11) 94643-9695", BirthDate: time.Now()}
-	result := DB.Create(&user) // pass pointer of data to Create
-	if result.Error != nil {
-		fmt.Println(result.Error)
-	} else {
-		fmt.Println(result.RowsAffected)
+
+	var newUser models.User
+
+	if err := c.BindJSON(&newUser); err != nil {
+		fmt.Println(err)
+		c.JSON(400, gin.H{
+			"erro": err,
+		})
 	}
-	fmt.Println(user.ID) // returns inserted data's primary key
+
+	// check if there is a record with the given email
+	res := DB.Where("email = ?", newUser.Email).First(&models.User{})
+	if res.Error == nil {
+		c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{
+			"message": "Já existe usuario com esse e-mail cadastrado",
+		})
+		return
+	}
+
+	//hash the passowrd
+	hahsedPWD, err := hashPassword(newUser.Password)
+	if err != nil {
+		c.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
+			"message": err,
+		})
+		return
+	}
+
+	//use the hashed password
+	newUser.Password = hahsedPWD
+
+	DB.Create(&newUser)
+	c.JSON(200, gin.H{
+		"data": &newUser,
+	})
+	// user.BirthDate, _ = time.Parse("2006-01-02", user.BirthDate)
+}
+
+// hashPassword hashs passwords
+func hashPassword(password string) (string, error) {
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.MinCost)
+	if err != nil {
+		return "", err
+	}
+
+	return string(hashedPassword), nil
 }

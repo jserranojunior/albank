@@ -7,6 +7,7 @@ package http
 import (
 	"github.com/gocondor/core/routing"
 	"github.com/jserranojunior/intellect/backgo/http/handlers"
+	"github.com/jserranojunior/intellect/backgo/http/middlewares"
 )
 
 // RegisterRoutes to register your routes
@@ -14,7 +15,9 @@ func RegisterRoutes() {
 	router := routing.Resolve()
 
 	//Define your routes here
-	router.Get("/user", handlers.UserCreate)
+	router.Post("/user", handlers.UserCreate)
+	router.Get("/user", middlewares.VerifyJwt, handlers.GetUser)
+
 	router.Get("/", handlers.HomeShow)
 
 	router.Post("/login", handlers.AuthLogin)

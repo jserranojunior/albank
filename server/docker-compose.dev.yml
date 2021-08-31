@@ -10,7 +10,7 @@ services:
     image: "node:lts-alpine"
     working_dir: /app
     volumes:
-      - "${APPPATH}/front:/app"
+      - "${PATHCLIENTES}/albank/front:/app"
     command: "yarn dev"
     networks:
       - stack_ponte
@@ -29,7 +29,7 @@ services:
     ports:
       - "5081:8000"
     volumes:
-      - "${APPPATH}/back:/app"
+      - "${PATHCLIENTES}/albank/back:/app"
       - "${GOPATH}:/go"
     command: "/bin/sh -c 'cd /app && reflex -c /app/reflex.conf'"
     labels:

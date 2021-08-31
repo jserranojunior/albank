@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     colors: {
       albank: {
-        1: "#004080",
+        1: "#0b4177",
         2: "#f8981d",
         3: "#fdf100",
       },
