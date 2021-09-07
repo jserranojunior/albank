@@ -44,9 +44,10 @@ func UserCreate(c *gin.Context) {
 	// check if there is a record with the given email
 	res := DB.Where("email = ?", newUser.Email).First(&models.User{})
 	if res.Error == nil {
-		c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{
-			"message": "Já existe usuario com esse e-mail cadastrado",
+		c.JSON(400, gin.H{
+			"erro": "Já existe usuario com esse e-mail cadastrado",
 		})
+
 		return
 	}
 

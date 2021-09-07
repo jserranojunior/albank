@@ -3,12 +3,7 @@
     <div class="w-full sm:w-full md:w-1/3 lg:w-1/4 mx-auto px-6">
       <div class="flex flex-wrap margin-bottom-4 margin-topo justify-center">
         <div class="w-auto text-center">
-          <img
-            class="img-fluid"
-            width="150"
-            src="../../assets/img/logo_albank.jpeg"
-            alt=""
-          />
+          <img class="img-fluid" width="150" src="@/assets/img/logo_albank.jpeg" alt="" />
         </div>
       </div>
       <div class="text-white text-center">
@@ -78,9 +73,12 @@ export default {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
     const useInstitucional = inject("institucional");
-    const { loginInputs } = useInstitucional;
+    const { linkWhatsApp } = useInstitucional;
 
-    return { loginInputs };
+    const useAuth = inject("auth");
+    const { loginInputs, auth, Login } = useAuth;
+
+    return { loginInputs, auth, Login, linkWhatsApp };
   },
 };
 </script>

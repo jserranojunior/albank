@@ -1,11 +1,15 @@
 package middlewares
 
 import (
+	"fmt"
+
 	"github.com/gin-gonic/gin"
 )
 
 // CORSMiddleware enable router another domain
 var CORSMiddleware gin.HandlerFunc = func(c *gin.Context) {
+
+	fmt.Println("ROLANDO O CORS")
 
 	c.Header("Access-Control-Allow-Origin", "*")
 	c.Header("Access-Control-Allow-Credentials", "true")

@@ -6,12 +6,12 @@ import { AuthMiddleware } from "./middlewares/AuthMiddleware";
 const { auth } = AuthMiddleware();
 
 // import Home from "../modules/institucional/home.vue";
-import Cadastro from "../modules/institucional/cadastro.vue";
+import Cadastro from "../modules/auth/pages/cadastro.vue";
 import FinanceiroIndex from "../modules/financeiro/pages/FinanceiroIndex.vue";
 import AdicionarConta from "../modules/financeiro/pages/AdicionarConta.vue";
 import EditarConta from "../modules/financeiro/pages/EditarConta.vue";
 import NotFound from "../views/layouts/NotFound.vue";
-import Login from "../modules/institucional/login.vue";
+import Login from "../modules/auth/pages/login.vue";
 
 const routes = [
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },

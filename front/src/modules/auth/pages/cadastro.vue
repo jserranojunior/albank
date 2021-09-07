@@ -3,12 +3,7 @@
     <div class="w-full sm:w-full md:w-1/3 lg:w-1/4 mx-auto px-6">
       <div class="flex flex-wrap margin-bottom-4 margin-topo justify-center">
         <div class="w-auto text-center">
-          <img
-            class="img-fluid"
-            width="150"
-            src="../../assets/img/logo_albank.jpeg"
-            alt=""
-          />
+          <img class="img-fluid" width="150" src="@/assets/img/logo_albank.jpeg" alt="" />
         </div>
       </div>
       <div class="text-white text-center">
@@ -37,13 +32,19 @@
             placeholder="E-mail"
           />
           <input
-            v-model="registerInputs.pass"
+            v-model="registerInputs.password"
             type="password"
             class="form-tail mt-2"
             placeholder="Crie sua senha"
           />
-          <div class="btn-warning-tail mt-4">Enviar</div>
+          <div class="btn-warning-tail mt-4" @click="Register()">Enviar</div>
         </div>
+      </div>
+      <div v-if="auth.erro" class="btn-danger-tail text-sm mt-2 cursor-default">
+        {{ auth.erro }}
+      </div>
+      <div v-else-if="auth.data" class="btn-success-tail text-sm mt-2 cursor-default">
+        {{ auth.data }}
       </div>
     </div>
     <div class="w-full text-center text-white">
@@ -94,9 +95,12 @@ export default {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
     const useInstitucional = inject("institucional");
-    const { registerInputs } = useInstitucional;
+    const { linkWhatsApp } = useInstitucional;
 
-    return { registerInputs };
+    const useAuth = inject("auth");
+    const { registerInputs, auth, Register } = useAuth;
+
+    return { linkWhatsApp, Register, auth, registerInputs };
   },
 };
 </script>

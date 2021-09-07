@@ -49,14 +49,15 @@
 
 <script>
 import { inject, onBeforeMount } from "vue";
-import Cadastro from "./cadastro.vue";
-import Login from "./login.vue";
+import Cadastro from "@/auth/pages/cadastro.vue";
+import Login from "@/auth/pages/login.vue";
 export default {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   components: {
     Cadastro,
     Login,
   },
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
     const useInstitucional = inject("institucional");
     const { bgImagem, mobile, linkWhatsApp, isMobile } = useInstitucional;

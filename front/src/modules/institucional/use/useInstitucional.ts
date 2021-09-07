@@ -7,10 +7,6 @@ export const useInstitucional = () => {
     bgImagem: "",
     mobile: false,
     linkWhatsApp: "https://web.whatsapp.com/send?phone=5511998068930",
-    registerInputs: {
-      type: "",
-    },
-    loginInputs: {},
   });
 
   async function isMobile() {

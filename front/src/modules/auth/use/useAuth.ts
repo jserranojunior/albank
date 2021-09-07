@@ -9,8 +9,14 @@ export const useAuth = () => {
   const state = reactive({
     ola: "Ola",
     fields: { email: "", password: "" },
-    auth: { erro: "", token: "" },
-
+    auth: { erro: "", token: "", data: "" },
+    erro: null,
+    loginInputs: {},
+    registerInputs: {
+      type: "",
+      email: "",
+      password: "",
+    },
   });
 
   async function Login() {
@@ -36,6 +42,31 @@ export const useAuth = () => {
     }
   }
 
+  async function Register() {
+    state.auth.erro = "";
+    state.auth.data = "";
+    if (
+      state.registerInputs &&
+      state.registerInputs.email &&
+      state.registerInputs.password
+    ) {
+      return await HttpAuth.register(state.registerInputs)
+        .then((res) => {
+          if (res && res.data) {
+            state.auth.data = "Cadastrado com sucesso!";
+            console.log(state.auth.data);
+          }
+        })
+        .catch((err) => {
+          console.log("abaixo erro 2");
+          console.log(err.response.data.erro);
+          state.auth.erro = err.response.data.erro;
+        });
+    } else {
+      state.auth.erro = "Campos Vazios";
+      setToken("");
+    }
+  }
 
   async function isLogged() {
     if (localStorage.getItem("token") !== state.auth.token) {
@@ -90,5 +121,5 @@ export const useAuth = () => {
     setToken("");
     router.push({ name: "Login" });
   }
-  return { ...toRefs(state), Logout, Login, isLogged };
+  return { ...toRefs(state), Logout, Login, isLogged, Register };
 };

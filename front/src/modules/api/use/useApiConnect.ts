@@ -19,7 +19,10 @@ export interface ClassUseApiConnect {
     endpoint: string,
     body: Record<string, unknown>
   ) => Promise<void | AxiosResponse>;
-  getWithoutToken: (endpoint: string, body: Record<string, unknown>) => Promise<void | AxiosResponse> ;
+  getWithoutToken: (
+    endpoint: string,
+    body: Record<string, unknown>
+  ) => Promise<void | AxiosResponse>;
   postWithoutToken: (
     endpoint: string,
     body: Record<string, unknown>
@@ -36,14 +39,14 @@ class useApiConnect {
   public axiosWithoutToken: AxiosInstance;
   public axiosInstance: AxiosInstance;
   public backApiUrl: string;
-  public axios: AxiosStatic
+  public axios: AxiosStatic;
 
   // token: string | null | undefined, axiosImage: AxiosInstance, axiosWithoutToken: AxiosInstance, backApiUrl: string
   constructor() {
-   
-      this.token = localStorage.getItem("token");  
-      this.backApiUrl = `http://${process.env.VUE_APP_BACK_API_URL}`;   
-      this.axios = axios
+    this.token = localStorage.getItem("token");
+    this.backApiUrl = `${process.env.VUE_APP_BACK_API_URL}`;
+    console.log(this.backApiUrl);
+    this.axios = axios;
     this.axiosImage = this.axios.create({
       baseURL: this.backApiUrl,
       headers: {
@@ -56,17 +59,13 @@ class useApiConnect {
       baseURL: this.backApiUrl,
     });
 
-      
-          this.axiosInstance = this.axios.create({
+    this.axiosInstance = this.axios.create({
       baseURL: this.backApiUrl,
       headers: {
         Authorization: "Bearer " + this.token,
         "Content-Type": "application/json",
       },
     });
-    
-
-
   }
 
   async get(endpoint: string): Promise<void | AxiosResponse> {
@@ -104,7 +103,7 @@ class useApiConnect {
     return this.axiosImage.post(endpoint, body);
   }
 
-  async getWithoutToken(endpoint: string): Promise<void | AxiosResponse>  {
+  async getWithoutToken(endpoint: string): Promise<void | AxiosResponse> {
     return this.axiosWithoutToken.get(endpoint);
   }
 
@@ -112,8 +111,7 @@ class useApiConnect {
     endpoint: string,
     body: Record<string, unknown>
   ): Promise<void | AxiosResponse> {
-
-    return this.axiosWithoutToken.post(endpoint, body)
+    return this.axiosWithoutToken.post(endpoint, body);
   }
 
   async putWithoutToken(
