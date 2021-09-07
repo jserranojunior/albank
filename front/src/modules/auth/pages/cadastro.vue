@@ -17,11 +17,14 @@
 
           <input
             v-model="registerInputs.cellphone"
+            v-maska="'(##) #####-####'"
             class="form-tail mt-2"
             placeholder="Telefone/Whatsapp ( ) 00000-0000"
           />
           <input
-            v-model="registerInputs.birth_date"
+            v-model="registerInputs.dtBirth"
+            v-maska="'##/##/####'"
+            type="text"
             class="form-tail mt-2"
             placeholder="Data de nascimento    /  /"
           />

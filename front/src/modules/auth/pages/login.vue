@@ -10,12 +10,13 @@
         <div class="font-bold text-2xl mt-6">Login</div>
         <div class="mt-2">
           <input
-            v-model="loginInputs.name"
+            v-model="loginInputs.cellphone"
             class="form-tail mt-2"
             placeholder="Telefone/Whatsapp ( ) 00000-0000"
           />
           <input
             v-model="loginInputs.password"
+            type="password"
             class="form-tail mt-2"
             placeholder="Digite sua senha"
           />

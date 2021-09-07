@@ -1,4 +1,6 @@
 import useHttpAuth from "./useHttpAuth";
+import { datePtBrToUs, dateUsToPtBr } from "@/helpers/dates/helpersDates";
+
 import { reactive, toRefs } from "vue";
 // import { useRouter } from 'vue-router'
 import router from "@/router/index";
@@ -16,6 +18,8 @@ export const useAuth = () => {
       type: "",
       email: "",
       password: "",
+      birth_date: "",
+      dtBirth: "",
     },
   });
 
@@ -50,6 +54,12 @@ export const useAuth = () => {
       state.registerInputs.email &&
       state.registerInputs.password
     ) {
+      if (state.registerInputs.dtBirth) {
+        state.registerInputs.birth_date = datePtBrToUs(
+          state.registerInputs.dtBirth
+        );
+      }
+
       return await HttpAuth.register(state.registerInputs)
         .then((res) => {
           if (res && res.data) {
@@ -64,6 +74,11 @@ export const useAuth = () => {
         });
     } else {
       state.auth.erro = "Campos Vazios";
+      if (state.registerInputs.birth_date) {
+        state.registerInputs.birth_date = dateUsToPtBr(
+          state.registerInputs.birth_date
+        );
+      }
       setToken("");
     }
   }
