@@ -21,7 +21,7 @@
             placeholder="Telefone/Whatsapp ( ) 00000-0000"
           />
           <input
-            v-model="registerInputs.dtnascimento"
+            v-model="registerInputs.birth_date"
             class="form-tail mt-2"
             placeholder="Data de nascimento    /  /"
           />
