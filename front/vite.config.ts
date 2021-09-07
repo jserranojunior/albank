@@ -16,7 +16,7 @@ export default ({ command }) => {
         hmr: { host: "frontalbank.localhost", port: 80 },
       },
     };
-  } else {
+  } else if (command === "build") {
     return {
       plugins: [vue(), envCompatible()],
       resolve: {
@@ -27,6 +27,22 @@ export default ({ command }) => {
         port: 5000,
         https: true,
         hmr: { host: "albank.alvitre.com.br", port: 443 },
+      },
+      build: {
+        chunkSizeWarningLimit: 2000,
+      },
+    };
+  } else if (command === "testbuild") {
+    return {
+      plugins: [vue(), envCompatible()],
+      resolve: {
+        alias: [{ find: "@", replacement: "/src" }],
+      },
+      server: {
+        host: "0.0.0.0",
+        port: 5000,
+        https: true,
+        hmr: { host: "frontalbank.localhost", port: 80 },
       },
       build: {
         chunkSizeWarningLimit: 2000,
