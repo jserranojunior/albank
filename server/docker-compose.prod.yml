@@ -28,11 +28,11 @@ services:
     volumes:
       - ${APPPATH}/back:/app
     ports:
-      - 3037:3030
+      - 3037:8000
     networks:
       - stack_ponte
     command: "/bin/sh -c 'cd /app && ls && ./main'"
     labels:
       - "traefik.enable=true"
       - traefik.http.routers.goalbank.rule=Host(`goalbank.${DOMAIN}`)
-      - traefik.http.services.goalbank.loadbalancer.server.port=3030
+      - traefik.http.services.goalbank.loadbalancer.server.port=8000
