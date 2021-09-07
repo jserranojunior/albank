@@ -11,6 +11,7 @@
         <div class="mt-2">
           <input
             v-model="loginInputs.cellphone"
+            v-maska="'(##) #####-####'"
             class="form-tail mt-2"
             placeholder="Telefone/Whatsapp ( ) 00000-0000"
           />
