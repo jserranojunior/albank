@@ -18,7 +18,7 @@ services:
       - "8778:80"
     labels:
       - "traefik.enable=true"
-      - traefik.http.routers.frontalbank.rule=Host(`albank.${DOMAIN}`)
+      - traefik.http.routers.frontalbank.rule=Host(`albank.${DOMAIN}`, `oalbank.com.br`)
       - traefik.http.services.frontalbank.loadbalancer.server.port=80
 
   golangalbank_prod:
