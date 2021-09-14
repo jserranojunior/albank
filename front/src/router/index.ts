@@ -12,6 +12,7 @@ import AdicionarConta from "../modules/financeiro/pages/AdicionarConta.vue";
 import EditarConta from "../modules/financeiro/pages/EditarConta.vue";
 import NotFound from "../views/layouts/NotFound.vue";
 import Login from "../modules/auth/pages/login.vue";
+import Home from "../modules/institucional/home.vue";
 
 const routes = [
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
@@ -20,6 +21,11 @@ const routes = [
     name: "Home",
     component: Login,
     beforeEnter: [auth],
+  },
+  {
+    path: "/inicio",
+    name: "Inicio",
+    component: Home,
   },
   {
     path: "/cadastro",

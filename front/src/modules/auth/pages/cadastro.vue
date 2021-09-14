@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap justify-center mt-16">
+  <div class="flex flex-wrap justify-center pt-16">
     <div class="w-full sm:w-full md:w-1/3 lg:w-1/4 mx-auto px-6">
       <div class="flex flex-wrap margin-bottom-4 margin-topo justify-center">
         <div class="w-auto text-center">
@@ -27,6 +27,13 @@
             type="text"
             class="form-tail mt-2"
             placeholder="Data de nascimento    /  /"
+          />
+          <input
+            v-model="registerInputs.cpf"
+            v-maska="'###.###.###-##'"
+            type="text"
+            class="form-tail mt-2"
+            placeholder="CPF"
           />
           <input
             v-model="registerInputs.email"

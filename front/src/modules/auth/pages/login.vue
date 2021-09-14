@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-wrap justify-center mt-16">
+  <div class="flex flex-wrap justify-center pt-16">
     <div class="w-full sm:w-full md:w-1/3 lg:w-1/4 mx-auto px-6">
       <div class="flex flex-wrap margin-bottom-4 margin-topo justify-center">
         <div class="w-auto text-center">
@@ -9,21 +9,22 @@
       <div class="text-white text-center">
         <div class="font-bold text-2xl mt-6">Login</div>
         <div class="mt-2">
-          <input
-            v-model="loginInputs.cellphone"
-            v-maska="'(##) #####-####'"
-            class="form-tail mt-2"
-            placeholder="Telefone/Whatsapp ( ) 00000-0000"
-          />
-          <input
-            v-model="loginInputs.password"
-            type="password"
-            class="form-tail mt-2"
-            placeholder="Digite sua senha"
-          />
-          <p class="underline text-right text-sm">esqueci minha senha</p>
+          <form action="">
+            <SInputT
+              v-model="loginInputs.cellphone"
+              v-maska="'(##) #####-####'"
+              class="mt-2 form-tail"
+              placeholder="Telefone/Whatsapp ( ) 00000-0000"
+            ></SInputT>
+            <SInputP
+              v-model="loginInputs.password"
+              class="mt-2"
+              placeholder="Digite sua senha"
+            ></SInputP>
+          </form>
 
-          <div class="btn-warning-tail mt-6">Entrar</div>
+          <p class="underline text-right text-sm">esqueci minha senha</p>
+          <SBtn class="btn-warning-tail" value="Entrar">Entrar</SBtn>
         </div>
       </div>
     </div>

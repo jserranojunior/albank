@@ -18,6 +18,7 @@ export const useAuth = () => {
       type: "",
       email: "",
       password: "",
+      cpf: "",
       birth_date: "",
       dtBirth: "",
     },
@@ -52,7 +53,8 @@ export const useAuth = () => {
     if (
       state.registerInputs &&
       state.registerInputs.email &&
-      state.registerInputs.password
+      state.registerInputs.password &&
+      state.registerInputs.cpf
     ) {
       if (state.registerInputs.dtBirth) {
         state.registerInputs.birth_date = datePtBrToUs(

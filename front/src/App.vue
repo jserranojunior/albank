@@ -1,27 +1,28 @@
 <template>
-  <div>
-    <Main>
-      <template #main>
+  <SliferLayout>
+    <template #mainpage>
+      <div class="bg-albank-1 min-h-screen">
         <router-view></router-view>
-      </template>
-    </Main>
-  </div>
+      </div>
+    </template>
+  </SliferLayout>
 </template>
 
 <script>
-import Main from "./views/layouts/Main.vue";
+import SliferLayout from "./views/layouts/SliferLayout.vue";
 import { Provides } from "./provides/index";
-
 export default {
   name: "App",
   components: {
-    Main,
+    SliferLayout,
   },
+
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
     Provides();
-
-    // const { isLogged } = useAuth;
   },
 };
 </script>
+<style>
+@import "../node_modules/slifer/src/assets/styles/slifer-style.css";
+</style>
