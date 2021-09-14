@@ -23,7 +23,7 @@ func AuthLogin(c *gin.Context) {
 		result := DB.Select("id", "password").Where("email = ?", email).First(&user)
 		if result.RowsAffected == 0 {
 			c.JSON(401, gin.H{
-				"erro": "erro ao tentar fazer login, email ou senha incorretos",
+				"erro": "Erro ao tentar fazer login, email ou senha incorretos",
 			})
 		} else {
 			if compareBcrypt(user.Password, password) {
@@ -35,7 +35,7 @@ func AuthLogin(c *gin.Context) {
 				})
 			} else {
 				c.JSON(401, gin.H{
-					"erro": "erro ao tentar fazer login",
+					"erro": "Erro ao tentar fazer login, email ou senha incorretos",
 				})
 			}
 		}

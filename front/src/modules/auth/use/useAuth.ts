@@ -13,7 +13,7 @@ export const useAuth = () => {
     fields: { email: "", password: "" },
     auth: { erro: "", token: "", data: "" },
     erro: null,
-    loginInputs: {},
+    loginInputs: { email: "", password: "" },
     registerInputs: {
       type: "",
       email: "",
@@ -25,28 +25,41 @@ export const useAuth = () => {
   });
 
   async function Login() {
-    if (state.fields && state.fields.email && state.fields.password) {
-      const Auth = HttpAuth.login(state.fields);
-      Auth.then((res) => {
-        if (res && res.data) {
-          setToken(res.data.token).then((response) => {
-            if (response) {
-              router.push({ name: "Financeiro" });
-            }
-          });
-        } else {
-          state.auth.erro = "Erro ao fazer o login";
-        }
-      });
-      Auth.catch(() => {
-        state.auth.erro = "Erro ao fazer o login";
-      });
+    state.auth.erro = "";
+    state.auth.data = "";
+    if (
+      state.loginInputs &&
+      state.loginInputs.email &&
+      state.loginInputs.password
+    ) {
+      return await HttpAuth.login(state.loginInputs)
+        .then((res) => {
+          if (res && res.data) {
+            state.auth.data = "Logado com sucesso!";
+            console.log(res.data.token);
+            setToken(res.data.token).then((response) => {
+              if (response) {
+                // console.log("fazendo redirect");
+                router.push({ name: "Home" });
+              }
+            });
+            console.log(state.auth.data);
+          }
+        })
+        .catch((err) => {
+          console.log("abaixo erro login");
+          console.log(err.response.data.erro);
+          state.auth.erro = err.response.data.erro;
+        });
     } else {
       state.auth.erro = "Campos Vazios";
       setToken("");
     }
   }
-
+  function clearMessages() {
+    state.auth.erro = "";
+    state.auth.data = "";
+  }
   async function Register() {
     state.auth.erro = "";
     state.auth.data = "";
@@ -135,8 +148,9 @@ export const useAuth = () => {
     }
   }
   function Logout() {
-    setToken("");
-    router.push({ name: "Login" });
+    setToken("").then(() => {
+      router.push({ name: "Login" });
+    });
   }
-  return { ...toRefs(state), Logout, Login, isLogged, Register };
+  return { ...toRefs(state), Logout, Login, isLogged, Register, clearMessages };
 };

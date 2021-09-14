@@ -11,21 +11,26 @@
         <div class="mt-2">
           <form action="">
             <SInputT
-              v-model="loginInputs.cellphone"
-              v-maska="'(##) #####-####'"
+              v-model="loginInputs.email"
               class="mt-2 form-tail"
-              placeholder="Telefone/Whatsapp ( ) 00000-0000"
+              placeholder="Digite seu e-mail"
             ></SInputT>
             <SInputP
               v-model="loginInputs.password"
-              class="mt-2"
+              class="mt-2 text-black"
               placeholder="Digite sua senha"
             ></SInputP>
           </form>
 
           <p class="underline text-right text-sm">esqueci minha senha</p>
-          <SBtn class="btn-warning-tail" value="Entrar">Entrar</SBtn>
+          <SBtn class="btn-warning-tail" value="Entrar" @click="Login()">Entrar</SBtn>
         </div>
+      </div>
+      <div v-if="auth.erro" class="btn-danger-tail text-sm mt-2 cursor-default">
+        {{ auth.erro }}
+      </div>
+      <div v-else-if="auth.data" class="btn-success-tail text-sm mt-2 cursor-default">
+        {{ auth.data }}
       </div>
     </div>
     <div class="w-full text-center text-white">
@@ -71,15 +76,25 @@
 </template>
 
 <script>
-import { inject } from "vue";
+import { inject, watch } from "vue";
+import { useRoute } from "vue-router";
+
 export default {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
+    const route = useRoute();
     const useInstitucional = inject("institucional");
     const { linkWhatsApp } = useInstitucional;
 
     const useAuth = inject("auth");
-    const { loginInputs, auth, Login } = useAuth;
+    const { loginInputs, auth, Login, clearMessages } = useAuth;
+
+    watch(
+      () => route.name,
+      () => {
+        clearMessages();
+      }
+    );
 
     return { loginInputs, auth, Login, linkWhatsApp };
   },

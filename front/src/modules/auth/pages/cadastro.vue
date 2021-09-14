@@ -60,7 +60,7 @@
     <div class="w-full text-center text-white">
       <h3 class="text-xl my-7 font-bold">
         Já possui uma conta?
-        <router-link to="/">
+        <router-link to="/login">
           <span class="text-yellow-500 underline cursor-pointer">Faça Login</span>
         </router-link>
       </h3>
@@ -100,15 +100,25 @@
 </template>
 
 <script>
-import { inject } from "vue";
+import { inject, watch } from "vue";
+import { useRoute } from "vue-router";
+
 export default {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
+    const route = useRoute();
     const useInstitucional = inject("institucional");
     const { linkWhatsApp } = useInstitucional;
 
     const useAuth = inject("auth");
-    const { registerInputs, auth, Register } = useAuth;
+    const { registerInputs, auth, Register, clearMessages } = useAuth;
+
+    watch(
+      () => route.name,
+      () => {
+        clearMessages();
+      }
+    );
 
     return { linkWhatsApp, Register, auth, registerInputs };
   },
