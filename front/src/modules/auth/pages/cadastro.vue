@@ -1,6 +1,6 @@
 <template>
-  <div class="flex flex-wrap justify-center pt-16">
-    <div class="w-full sm:w-full md:w-1/3 lg:w-1/4 mx-auto px-6">
+  <div class="flex flex-wrap justify-center pt-4">
+    <div class="w-full sm:w-full md:w-1/2 lg:w-1/3 mx-auto px-6">
       <div class="flex flex-wrap margin-bottom-4 margin-topo justify-center">
         <div class="w-auto text-center">
           <img class="img-fluid" width="150" src="@/assets/img/logo_albank.jpeg" alt="" />

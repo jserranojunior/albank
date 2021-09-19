@@ -5,48 +5,6 @@
 .h1 {
   @apply text-2xl;
 }
-
-.sidebar-open {
-  @apply w-6/12;
-}
-
-.sidebar-close > div > div > nav > a > span.text-menu {
-  @apply hidden;
-}
-
-@screen sm {
-  .sidebar-open {
-    @apply w-4/12;
-  }
-  .sidebar-close {
-    @apply w-2/12;
-  }
-}
-@screen md {
-  .sidebar-open {
-    @apply w-1/5 bg-blue-300;
-  }
-  .sidebar-close {
-    @apply w-2/12;
-  }
-}
-@screen lg {
-  .sidebar-open {
-    @apply w-1/5 bg-red-300;
-  }
-  .sidebar-close {
-    @apply w-1/12;
-  }
-}
-@screen xl {
-  .sidebar-open {
-    @apply w-3/12;
-  }
-  .sidebar-close {
-    @apply w-1/12;
-  }
-}
-
 @tailwind components;
 .painel {
   @apply bg-white rounded w-full px-3 py-2 shadow;
@@ -127,17 +85,7 @@
   @apply bg-gray-700 text-white font-bold py-1 px-2 rounded cursor-pointer text-center;
 }
 
-.nav-btn {
-  @apply flex flex-row items-center w-full px-4 py-2 mt-2 text-xs font-semibold 
-  text-left bg-gray-200 rounded-lg text-black;
-}
-.nav-btn:hover {
-  @apply text-gray-900  bg-blue-200;
-}
 
-.nav-btn:focus {
-  @apply text-gray-900 bg-blue-200 outline-none;
-}
 
 .table-tail {
   @apply table-auto w-full;
@@ -201,4 +149,15 @@ s {
   font-family: bradhitc;
   color: #203864;
   text-decoration: none;
+}
+
+
+.nav-btn{
+  @apply bg-gray-600 text-white
+}
+.nav-btn:hover {
+  @apply bg-gray-800 text-white;
+}
+.nav-btn:focus {
+  @apply bg-gray-700 text-white;
 }
