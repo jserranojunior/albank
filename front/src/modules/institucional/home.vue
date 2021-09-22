@@ -11,7 +11,7 @@
             R$ <span class="text-2xl font-bold">0</span>,00
             <i class="ml-4 far fa-eye"></i>
           </div>
-          <div class="w-1/3 mt-4 mx-auto">
+          <div class="w-full md:w-1/3 mt-4 mx-auto">
             <SBtn
               class="bg-success-tail bg-white rounded-md text-black"
               value="Ver extrato"
@@ -20,18 +20,18 @@
         </div>
       </div>
       <div class="flex flex-wrap margin-bottom-4 margin-topo justify-center mt-10">
-        <div class="w-auto text-center">
+        <div class="w-full md:w-auto text-center">
           <span class="font-bold">R$ 0,00</span><br />
           em dinheiro
         </div>
-        <div class="bg-white px-0.5 mx-4"></div>
-        <div class="w-auto text-center">
+        <div class="bg-white pt-4 md:pt-0 px-0.5 mx-4 hidden md:block"></div>
+        <div class="w-full md:w-auto text-center">
           <span class="font-bold">R$ 0,00</span><br />
           em bônus
         </div>
       </div>
       <div class="flex flex-wrap margin-bottom-4 margin-topo justify-center">
-        <div class="w-1/3 text-center">
+        <div class="w-full md:w-auto text-center">
           <div class="w-full text-center text-2xl text-white mt-6 font">
             <router-link to="/cadastro">
               <SBtn
