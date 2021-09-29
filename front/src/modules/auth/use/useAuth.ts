@@ -36,16 +36,23 @@ export const useAuth = () => {
       state.loginInputs.password
     ) {
       return await HttpAuth.login(state.loginInputs)
-        .then((res) => {
+        .then(async (res) => {
           if (res && res.data) {
-            state.auth.data = "Logado com sucesso!";
-            state.logged = true;
-            state.admin = true;
-            console.log(res.data.token);
-            setToken(res.data.token).then((response) => {
+            console.log(res.data);
+            await setToken(res.data.token).then(async (response) => {
+              console.log("resposta setToken" + response);
               if (response) {
-                // console.log("fazendo redirect");
+                state.auth.data = "Logado com sucesso!";
+                state.logged = true;
+                await getUserID().then(async (res) => {
+                  state.userID = res;
+                  await isAdmin().then(() => {
+                    console.log("state login user" + state.userID);
+                  });
+                });
+
                 router.push({ name: "Home" });
+                // console.log("fazendo redirect");
               }
             });
             console.log(state.auth.data);
@@ -145,10 +152,12 @@ export const useAuth = () => {
     }
   }
   async function isAdmin() {
-    return await isLogged().then(async (res) => {
-      const userID = await getUserID();
-      if (res) {
-        if (userID == 2 || userID == 10) {
+    if (state.logged) {
+      console.log("Esta logado, verificar admin");
+      if (state.userID) {
+        console.log("Usuario comum" + state.userID);
+        if (state.userID == 2 || state.userID == 10) {
+          console.log(state.userID);
           state.admin = true;
           return true;
         } else {
@@ -157,7 +166,7 @@ export const useAuth = () => {
       } else {
         false;
       }
-    });
+    }
   }
   async function setToken(value: string) {
     localStorage.setItem("token", value);
@@ -169,24 +178,28 @@ export const useAuth = () => {
       return false;
     }
   }
-  function Logout() {
-    setToken("").then(() => {
+  async function Logout() {
+    await setToken("").then(async () => {
+      state.userID = null;
       state.admin = false;
       state.logged = false;
       router.push({ name: "Login" });
     });
   }
   async function getUserID() {
-    return await HttpAuth.getUser()
-      .then((res) => {
-        if (res) {
-          return res.data.data.ID;
-        }
-      })
-      .catch((err) => {
-        console.log("abaixo erro login");
-        console.log(err.response.data.erro);
-      });
+    if (state.logged) {
+      return await HttpAuth.getUser()
+        .then((res) => {
+          if (res) {
+            console.log(res.data.data);
+            return res.data.data.ID;
+          }
+        })
+        .catch((err) => {
+          console.log("abaixo erro ao pegar ID usuario");
+          console.log(err.response.data);
+        });
+    }
   }
   return {
     ...toRefs(state),

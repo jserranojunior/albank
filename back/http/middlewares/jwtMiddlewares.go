@@ -35,7 +35,6 @@ var VerifyJwt gin.HandlerFunc = func(c *gin.Context) {
 				fmt.Println(err)
 			}
 			tokenUint := uint(tokenInt)
-
 			c.Set("id", tokenUint)
 			c.Next()
 		}

@@ -48,12 +48,9 @@ export default {
       }
     },
     closeSidebarBodyClick() {
-      console.log("clicandk");
       if (document.querySelector(".sidebar")) {
-        console.log("existe sidebar");
         const storageSidebar = localStorage.getItem("sidebar");
         if (window.screen.width < 768 && storageSidebar === "sidebar-open") {
-          console.log("Sidebar aberta e fechando");
           this.closeSidebar();
         }
       }

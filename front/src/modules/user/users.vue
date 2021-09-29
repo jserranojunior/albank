@@ -22,7 +22,7 @@
               <td>{{ user.ID }}</td>
               <td>{{ user.name }}</td>
               <td>{{ user.cellphone }}</td>
-              <td>{{ user.dtBirth }}</td>
+              <td>{{ dateUsToPtBr(user.birth_date) }}</td>
               <td>{{ user.cpf }}</td>
               <td>{{ user.email }}</td>
             </tr>
@@ -34,6 +34,7 @@
 </template>
 <script>
 import { inject, onBeforeMount } from "vue";
+import { dateUsToPtBr } from "@/helpers/dates/helpersDates";
 
 // import { reactive, toRefs } from "vue";
 export default {
@@ -57,7 +58,7 @@ export default {
     //   ],
     // });
 
-    return { users };
+    return { users, dateUsToPtBr };
   },
 };
 </script>

@@ -12,8 +12,8 @@ import (
 func GetUser(c *gin.Context) {
 	var user models.User
 	tokenID := c.GetUint("id")
-
-	res := DB.First(&user, tokenID)
+	fmt.Println(tokenID)
+	res := DB.Where("ID", tokenID).Find(&user)
 
 	if res.Error != nil {
 		c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{

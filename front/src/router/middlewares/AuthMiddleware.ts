@@ -33,7 +33,10 @@ export const AuthMiddleware = () => {
     await useAuth()
       .isAdmin()
       .then((res) => {
+        console.log("Resultado");
         if (res) {
+          console.log("abaixo");
+          console.log(res);
           return next();
         } else {
           return next({ name: "Home" });

@@ -21,7 +21,7 @@
     <router-link v-if="logged" to="/users" class="nav-btn bg-gray-200">
       <span>Saldo</span>
     </router-link>
-    <div v-if="admin" class="nav-btn bg-red-600 cursor-pointer" @click="Logout()">
+    <div v-if="logged" class="nav-btn bg-red-600 cursor-pointer" @click="Logout()">
       <span>Sair</span>
     </div>
     <span v-if="admin" class="text-xs mt-4 text-center text-white font-bold mx-auto"
@@ -43,9 +43,9 @@ export default {
   setup() {
     const useAuth = inject("auth");
     const { Logout, admin, logged, isAdmin, isLogged } = useAuth;
-    onMounted(() => {
-      isAdmin();
-      isLogged();
+    onMounted(async () => {
+      await isAdmin();
+      await isLogged();
     });
     const state = reactive({
       sidebarHeight: 0,
