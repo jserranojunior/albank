@@ -47,11 +47,10 @@ export const useAuth = () => {
                 await getUserID().then(async (res) => {
                   state.userID = res;
                   await isAdmin().then(() => {
-                    console.log("state login user" + state.userID);
+                    router.push({ name: "Home" });
                   });
                 });
 
-                router.push({ name: "Home" });
                 // console.log("fazendo redirect");
               }
             });
@@ -152,22 +151,20 @@ export const useAuth = () => {
     }
   }
   async function isAdmin() {
-    if (state.logged) {
-      console.log("Esta logado, verificar admin");
-      if (state.userID) {
-        console.log("Usuario comum" + state.userID);
-        if (state.userID == 2 || state.userID == 10) {
-          console.log(state.userID);
-          state.admin = true;
-          return true;
-        } else {
-          return false;
-        }
-      } else {
-        false;
+    return await isLogged().then(async (log) => {
+      if (log) {
+        return await getUserID().then((id: number) => {
+          if (id == 2 || id == 10) {
+            state.admin = true;
+            return true;
+          } else {
+            return false;
+          }
+        });
       }
-    }
+    });
   }
+
   async function setToken(value: string) {
     localStorage.setItem("token", value);
     state.auth.token = value;
@@ -187,19 +184,17 @@ export const useAuth = () => {
     });
   }
   async function getUserID() {
-    if (state.logged) {
-      return await HttpAuth.getUser()
-        .then((res) => {
-          if (res) {
-            console.log(res.data.data);
-            return res.data.data.ID;
-          }
-        })
-        .catch((err) => {
-          console.log("abaixo erro ao pegar ID usuario");
-          console.log(err.response.data);
-        });
-    }
+    return await HttpAuth.getUser()
+      .then((res) => {
+        if (res) {
+          state.userID = res.data.data.ID;
+          return res.data.data.ID;
+        }
+      })
+      .catch((err) => {
+        console.log("abaixo erro ao pegar ID usuario");
+        console.log(err.response.data);
+      });
   }
   return {
     ...toRefs(state),
@@ -209,5 +204,6 @@ export const useAuth = () => {
     Register,
     clearMessages,
     isAdmin,
+    getUserID,
   };
 };

@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { reactive, inject, onMounted } from "vue";
+import { reactive, inject, onMounted, watch } from "vue";
 export default {
   name: "Sidebar",
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -42,13 +42,18 @@ export default {
 
   setup() {
     const useAuth = inject("auth");
-    const { Logout, admin, logged, isAdmin, isLogged } = useAuth;
+    const { Logout, admin, logged, isAdmin, isLogged, getUserID } = useAuth;
     onMounted(async () => {
-      await isAdmin();
       await isLogged();
     });
     const state = reactive({
       sidebarHeight: 0,
+    });
+
+    watch(logged, async () => {
+      await getUserID().then(async () => {
+        await isAdmin();
+      });
     });
 
     return { ...state, Logout, admin, logged };

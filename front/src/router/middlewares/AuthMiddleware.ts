@@ -30,18 +30,28 @@ export const AuthMiddleware = () => {
     _from: RouteLocationNormalized,
     next: Function
   ) {
-    await useAuth()
-      .isAdmin()
-      .then((res) => {
-        console.log("Resultado");
-        if (res) {
-          console.log("abaixo");
-          console.log(res);
-          return next();
-        } else {
-          return next({ name: "Home" });
+    return useAuth()
+      .isLogged()
+      .then(async (log) => {
+        if (log) {
+          return await useAuth()
+            .getUserID()
+            .then(async (id) => {
+              if (id) {
+                await useAuth()
+                  .isAdmin()
+                  .then((res) => {
+                    if (res) {
+                      return next();
+                    } else {
+                      return next({ name: "Home" });
+                    }
+                  });
+              }
+            });
         }
       });
   }
+
   return { auth, admin };
 };

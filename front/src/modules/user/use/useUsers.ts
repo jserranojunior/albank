@@ -11,12 +11,9 @@ export const useUsers = () => {
   });
 
   async function getAllUsers() {
-    console.log("Fazendo get");
     return await HttpUsers.getAllUsers()
       .then((res) => {
         if (res) {
-          console.log("Puxou algo");
-          console.log(res.data.data);
           state.users = res.data.data;
         }
       })
