@@ -22,6 +22,9 @@ export const useAuth = () => {
       birth_date: "",
       dtBirth: "",
     },
+    admin: false,
+    logged: false,
+    userID: null,
   });
 
   async function Login() {
@@ -36,6 +39,8 @@ export const useAuth = () => {
         .then((res) => {
           if (res && res.data) {
             state.auth.data = "Logado com sucesso!";
+            state.logged = true;
+            state.admin = true;
             console.log(res.data.token);
             setToken(res.data.token).then((response) => {
               if (response) {
@@ -50,6 +55,8 @@ export const useAuth = () => {
           console.log("abaixo erro login");
           console.log(err.response.data.erro);
           state.auth.erro = err.response.data.erro;
+          state.logged = false;
+          state.admin = false;
         });
     } else {
       state.auth.erro = "Campos Vazios";
@@ -97,7 +104,6 @@ export const useAuth = () => {
       setToken("");
     }
   }
-
   async function isLogged() {
     if (localStorage.getItem("token") !== state.auth.token) {
       let token: string;
@@ -108,8 +114,10 @@ export const useAuth = () => {
         localStorage.getItem("token") != undefined
       ) {
         token = String(localStorage.getItem("token"));
+        state.logged = true;
       } else {
         token = "";
+        state.logged = false;
       }
 
       await setToken(token).then(() => {
@@ -136,7 +144,21 @@ export const useAuth = () => {
       return true;
     }
   }
-
+  async function isAdmin() {
+    return await isLogged().then(async (res) => {
+      const userID = await getUserID();
+      if (res) {
+        if (userID == 2 || userID == 10) {
+          state.admin = true;
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        false;
+      }
+    });
+  }
   async function setToken(value: string) {
     localStorage.setItem("token", value);
     state.auth.token = value;
@@ -149,8 +171,30 @@ export const useAuth = () => {
   }
   function Logout() {
     setToken("").then(() => {
+      state.admin = false;
+      state.logged = false;
       router.push({ name: "Login" });
     });
   }
-  return { ...toRefs(state), Logout, Login, isLogged, Register, clearMessages };
+  async function getUserID() {
+    return await HttpAuth.getUser()
+      .then((res) => {
+        if (res) {
+          return res.data.data.ID;
+        }
+      })
+      .catch((err) => {
+        console.log("abaixo erro login");
+        console.log(err.response.data.erro);
+      });
+  }
+  return {
+    ...toRefs(state),
+    Logout,
+    Login,
+    isLogged,
+    Register,
+    clearMessages,
+    isAdmin,
+  };
 };

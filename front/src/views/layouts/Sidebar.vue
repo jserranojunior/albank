@@ -9,23 +9,49 @@
       src="@/assets/img/logo_albank.jpeg"
       alt=""
     />
-    <router-link to="/login" class="nav-btn">
+    <router-link v-if="!logged" to="/login" class="nav-btn">
       <span>Login</span>
     </router-link>
-    <router-link to="/cadastro" class="nav-btn">
+    <router-link v-if="!logged" to="/cadastro" class="nav-btn">
       <span>Cadastro</span>
+    </router-link>
+    <router-link v-if="logged" to="/users" class="nav-btn">
+      <span>Home</span>
+    </router-link>
+    <router-link v-if="logged" to="/users" class="nav-btn bg-gray-200">
+      <span>Saldo</span>
+    </router-link>
+    <div v-if="admin" class="nav-btn bg-red-600 cursor-pointer" @click="Logout()">
+      <span>Sair</span>
+    </div>
+    <span v-if="admin" class="text-xs mt-4 text-center text-white font-bold mx-auto"
+      >Administrador</span
+    >
+    <router-link v-if="admin" to="/users" class="nav-btn">
+      <span>Clientes</span>
     </router-link>
   </div>
 </template>
 
 <script>
+import { reactive, inject, onMounted } from "vue";
 export default {
   name: "Sidebar",
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  data() {
-    return {
+  /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
+  setup() {
+    const useAuth = inject("auth");
+    const { Logout, admin, logged, isAdmin, isLogged } = useAuth;
+    onMounted(() => {
+      isAdmin();
+      isLogged();
+    });
+    const state = reactive({
       sidebarHeight: 0,
-    };
+    });
+
+    return { ...state, Logout, admin, logged };
   },
 };
 </script>

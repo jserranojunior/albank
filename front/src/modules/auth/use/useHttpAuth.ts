@@ -5,19 +5,16 @@ class useHttpAuth {
   async login(data: Record<string, unknown>): Promise<void | AxiosResponse> {
     const urlApi = "/login";
     return ApiConnect.postWithoutToken(urlApi, data);
-    // .then((response) => {
-    //   return response;
-    // })
-    // .catch((err) => {
-    //   return err;
-    //   console.log(err);
-    // });
   }
 
   async register(data: Record<string, unknown>): Promise<void | AxiosResponse> {
     const urlApi = "/user";
-
     return ApiConnect.postWithoutToken(urlApi, data);
+  }
+
+  async getUser(): Promise<void | AxiosResponse> {
+    const urlApi = "/user";
+    return ApiConnect.get(urlApi);
   }
 }
 

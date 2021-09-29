@@ -22,6 +22,8 @@ func RegisterRoutes() {
 
 	router.Post("/user", middlewares.CORSMiddleware, handlers.UserCreate)
 	router.Get("/user", middlewares.CORSMiddleware, middlewares.VerifyJwt, handlers.GetUser)
+		router.Get("/admin/users", middlewares.CORSMiddleware, middlewares.VerifyJwt, handlers.GetAllUsers)
+
 
 	// financial := router.Group("/financial/")
 	// // financial.Use(middlewares.VerifyJwt, middlewares.CORSMiddleware())

@@ -1,5 +1,7 @@
 import { provide } from "vue";
 import { useAuth } from "@/modules/auth/use/useAuth";
+import { useUsers } from "@/modules/user/use/useUsers";
+
 import { useInstitucional } from "@/modules/institucional/use/useInstitucional";
 import { useFinancial } from "@/modules/financeiro/use/useFinancial";
 import useApiConnect from "@/modules/api/use/useApiConnect";
@@ -10,6 +12,6 @@ export const Provides = () => {
   provide("financial", useFinancial());
   provide("auth", useAuth());
   provide("apiconnect", ApiConnect);
-  provide("institucional", useInstitucional())
-
+  provide("institucional", useInstitucional());
+  provide("users", useUsers());
 };

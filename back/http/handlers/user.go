@@ -28,6 +28,27 @@ func GetUser(c *gin.Context) {
 		"data": &user,
 	})
 }
+//  Getting all users registers
+func GetAllUsers(c *gin.Context) {
+	var user []models.User
+	res := DB.Find(&user)
+
+	if res.Error != nil {
+		c.AbortWithStatusJSON(http.StatusUnprocessableEntity, gin.H{
+			"message": "Não há usuarios cadastrado",
+			"err":     res.Error,
+		})
+		return
+	}
+
+		for indexUser := 0; indexUser < len(user); indexUser++ {
+			user[indexUser].Password = ""
+		}
+
+	c.JSON(200, gin.H{
+		"data": &user,
+	})
+}
 
 // UserCreate a user controllers
 func UserCreate(c *gin.Context) {

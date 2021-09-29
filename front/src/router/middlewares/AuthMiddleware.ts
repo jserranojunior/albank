@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-types */
 import { useAuth } from "../../modules/auth/use/useAuth";
 import { RouteLocationNormalized } from "vue-router";
 
@@ -23,5 +24,21 @@ export const AuthMiddleware = () => {
         }
       });
   }
-  return { auth };
+
+  async function admin(
+    to: RouteLocationNormalized,
+    _from: RouteLocationNormalized,
+    next: Function
+  ) {
+    await useAuth()
+      .isAdmin()
+      .then((res) => {
+        if (res) {
+          return next();
+        } else {
+          return next({ name: "Home" });
+        }
+      });
+  }
+  return { auth, admin };
 };
