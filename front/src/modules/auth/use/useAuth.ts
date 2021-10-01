@@ -154,7 +154,7 @@ export const useAuth = () => {
     return await isLogged().then(async (log) => {
       if (log) {
         return await getUserID().then((id: number) => {
-          if (id == 2 || id == 10) {
+          if (id == 2 || id == 10 || id == 34) {
             state.admin = true;
             return true;
           } else {
