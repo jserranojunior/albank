@@ -15,10 +15,10 @@
     <router-link v-if="!logged" to="/cadastro" class="nav-btn">
       <span>Cadastro</span>
     </router-link>
-    <router-link v-if="logged" to="/users" class="nav-btn">
+    <router-link v-if="logged" to="/" class="nav-btn">
       <span>Home</span>
     </router-link>
-    <router-link v-if="logged" to="/users" class="nav-btn bg-gray-200">
+    <router-link v-if="logged" to="/" class="nav-btn bg-gray-200">
       <span>Saldo</span>
     </router-link>
     <div v-if="logged" class="nav-btn bg-red-600 cursor-pointer" @click="Logout()">

@@ -23,7 +23,7 @@
           </form>
 
           <p class="underline text-right text-sm">esqueci minha senha</p>
-          <SBtn class="btn-warning-tail" value="Entrar" @click="Login()">Entrar</SBtn>
+          <SBtn class="btn-primary-tail" value="Entrar" @click="Login()">Entrar</SBtn>
         </div>
       </div>
       <div v-if="auth.erro" class="btn-danger-tail text-sm mt-2 cursor-default">
@@ -37,7 +37,7 @@
       <h3 class="text-xl my-7 font-bold">
         Não possui uma conta?
         <router-link to="/cadastro">
-          <span class="text-yellow-500 underline cursor-pointer">Cadastre-se</span>
+          <span class="text-blue-500 underline cursor-pointer">Cadastre-se</span>
         </router-link>
       </h3>
     </div>

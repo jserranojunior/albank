@@ -47,7 +47,7 @@
             class="form-tail mt-2"
             placeholder="Crie sua senha"
           />
-          <div class="btn-warning-tail mt-4" @click="Register()">Enviar</div>
+          <div class="btn-primary-tail mt-4" @click="Register()">Enviar</div>
         </div>
       </div>
       <div v-if="auth.erro" class="btn-danger-tail text-sm mt-2 cursor-default">
@@ -61,7 +61,7 @@
       <h3 class="text-xl my-7 font-bold">
         Já possui uma conta?
         <router-link to="/login">
-          <span class="text-yellow-500 underline cursor-pointer">Faça Login</span>
+          <span class="text-blue-500 underline cursor-pointer">Faça Login</span>
         </router-link>
       </h3>
     </div>

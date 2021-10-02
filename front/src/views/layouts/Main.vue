@@ -1,5 +1,7 @@
 <template>
-  <div class="p-2 bg-albank-1 min-h-screen">
+  <div class="p-2 bg-albank-2 min-h-screen">
+    <!-- <vue-particles color="#dedede"></vue-particles> -->
+
     <div class="rounded-2xl">
       <!-- <Navbar></Navbar> -->
     </div>

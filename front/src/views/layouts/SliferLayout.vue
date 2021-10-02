@@ -1,8 +1,8 @@
 <template>
   <div class="dark:bg-gray-900 dark:text-gray-100">
     <nav
-      class="font-sans flex flex-wrap justify-between sm:text-left sm:justify-between py-0 px-4 bg-albank-1 text-white sm:items-baseline w-full dark:bg-gray-800 dark:text-gray-100 shadow-md border-b border-blue-900 dark:border-gray-700 no-print"
-      v-if="this.$slots.header"
+      v-if="$slots.header"
+      class="font-sans flex flex-wrap justify-between sm:text-left sm:justify-between py-0 px-4 bg-albank-2 text-white sm:items-baseline w-full dark:bg-gray-800 dark:text-gray-100 shadow-md border-b border-yellow-600 dark:border-gray-700 no-print"
     >
       <slot name="header"></slot>
     </nav>
@@ -10,8 +10,8 @@
       class="flex w-full h-screen bg-white text-dark dark:bg-gray-700 dark:text-gray-100"
     >
       <div
-        class="sidebar w-64 z-10 absolute md:static text-dark p-1 dark:bg-gray-700 dark:text-gray-100 no-print bg-albank-1 border-r-2 border-blue-900"
-        v-if="this.$slots.sidebar"
+        v-if="$slots.sidebar"
+        class="sidebar w-64 z-10 absolute md:static text-dark p-1 dark:bg-gray-700 dark:text-gray-100 no-print bg-albank-2 border-r-2 border-yellow-600"
       >
         <div class="flex flex-wrap items-center p-1 text-sm">
           <slot name="sidebar"></slot>
@@ -19,7 +19,7 @@
       </div>
       <!-- sm:w-8/12 md:w-10/12 lg:w-11/12 xl:w-11/12  -->
       <div
-        class="w-full z-0 p-2 absolute md:static bg-albank-1 text-white dark:bg-gray-600 dark:text-gray-100"
+        class="w-full z-0 p-2 absolute md:static bg-albank-2 text-white dark:bg-gray-600 dark:text-gray-100"
         @click="closeSidebarBodyClick()"
       >
         <slot name="mainpage"></slot>
@@ -28,13 +28,17 @@
   </div>
 </template>
 <script>
+// eslint-disable vue/script-setup-uses-vars //
+
 export default {
   components: {},
-  /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
+
+  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   data() {
     return {};
   },
   methods: {
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     closeSidebar() {
       if (document.querySelector(".sidebar")) {
         const sidebar = document.querySelector(".sidebar");
@@ -47,6 +51,7 @@ export default {
         }
       }
     },
+    // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
     closeSidebarBodyClick() {
       if (document.querySelector(".sidebar")) {
         const storageSidebar = localStorage.getItem("sidebar");

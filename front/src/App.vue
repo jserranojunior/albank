@@ -16,7 +16,7 @@
       <Sidebar></Sidebar>
     </template>
     <template #mainpage>
-      <div class="bg-albank-1 min-h-screen">
+      <div class="bg-albank-2 min-h-screen">
         <router-view></router-view>
       </div>
     </template>
