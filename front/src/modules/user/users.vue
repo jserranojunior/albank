@@ -18,7 +18,7 @@
           </thead>
 
           <tbody class="text-left">
-            <tr v-for="user in users" :key="user.ID">
+            <tr v-for="user in users" :key="user.ID" @click="selectUser(user.ID)">
               <td>{{ user.ID }}</td>
               <td>{{ user.name }}</td>
               <td>{{ user.cellphone }}</td>
@@ -35,13 +35,14 @@
 <script>
 import { inject, onBeforeMount } from "vue";
 import { dateUsToPtBr } from "@/helpers/dates/helpersDates";
+// import editUser from "./editUser.vue";
 
 // import { reactive, toRefs } from "vue";
 export default {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
     const useUsers = inject("users");
-    const { users, getAllUsers } = useUsers;
+    const { users, getAllUsers, selectUser } = useUsers;
     onBeforeMount(async () => {
       await getAllUsers();
     });
@@ -58,7 +59,7 @@ export default {
     //   ],
     // });
 
-    return { users, dateUsToPtBr };
+    return { users, dateUsToPtBr, selectUser };
   },
 };
 </script>

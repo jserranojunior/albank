@@ -22,6 +22,7 @@ export const useAuth = () => {
       birth_date: "",
       dtBirth: "",
     },
+
     admin: false,
     logged: false,
     userID: null,
@@ -73,6 +74,7 @@ export const useAuth = () => {
     state.auth.erro = "";
     state.auth.data = "";
   }
+
   async function Register() {
     state.auth.erro = "";
     state.auth.data = "";
@@ -202,6 +204,7 @@ export const useAuth = () => {
     Login,
     isLogged,
     Register,
+
     clearMessages,
     isAdmin,
     getUserID,

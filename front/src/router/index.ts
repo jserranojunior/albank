@@ -3,7 +3,11 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import { AuthMiddleware } from "./middlewares/AuthMiddleware";
+
+import { colorMiddleware } from "./middlewares/colorMiddleware";
 const { auth, admin } = AuthMiddleware();
+
+const { changeColor } = colorMiddleware();
 
 // import Home from "../modules/institucional/home.vue";
 import Cadastro from "../modules/auth/pages/cadastro.vue";
@@ -14,14 +18,14 @@ import NotFound from "../views/layouts/NotFound.vue";
 import Login from "../modules/auth/pages/login.vue";
 import Home from "../modules/institucional/home.vue";
 import Users from "../modules/user/users.vue";
-
+import EditUser from "../modules/user/editUser.vue";
 const routes = [
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
   {
     path: "/",
     name: "Home",
     component: Home,
-    beforeEnter: [auth],
+    beforeEnter: [auth, changeColor],
   },
   {
     path: "/users",
@@ -29,6 +33,13 @@ const routes = [
     component: Users,
     beforeEnter: [auth, admin],
   },
+  {
+    path: "/users/edit",
+    name: "EditUser",
+    component: EditUser,
+    beforeEnter: [auth, admin],
+  },
+
   {
     path: "/inicio",
     name: "Inicio",
@@ -38,12 +49,19 @@ const routes = [
     path: "/cadastro",
     name: "Cadastro",
     component: Cadastro,
+    beforeEnter: [changeColor],
+  },
+  {
+    path: "/maquininha",
+    name: "Maquininha",
+    component: Cadastro,
+    beforeEnter: [changeColor],
   },
   {
     path: "/login",
     name: "Login",
     component: Login,
-    beforeEnter: [auth],
+    beforeEnter: [auth, changeColor],
   },
 
   {

@@ -47,7 +47,7 @@
             class="form-tail mt-2"
             placeholder="Crie sua senha"
           />
-          <div class="btn-primary-tail mt-4" @click="Register()">Enviar</div>
+          <div class="btn-primary-tail bg-blue-600 mt-4" @click="Register()">Enviar</div>
         </div>
       </div>
       <div v-if="auth.erro" class="btn-danger-tail text-sm mt-2 cursor-default">

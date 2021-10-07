@@ -15,6 +15,9 @@
     <router-link v-if="!logged" to="/cadastro" class="nav-btn">
       <span>Cadastro</span>
     </router-link>
+    <router-link v-if="!logged" to="/maquininha" class="nav-btn">
+      <span>Maquininha</span>
+    </router-link>
     <router-link v-if="logged" to="/" class="nav-btn">
       <span>Home</span>
     </router-link>
