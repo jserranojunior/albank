@@ -35,17 +35,93 @@
                 placeholder="CPF"
               />
               <input
+                v-model="updateInputs.rg"
+                v-maska="'##.###.###-#'"
+                type="text"
+                class="form-tail mt-2"
+                placeholder="RG"
+              />
+
+              <input
                 v-model="updateInputs.email"
                 type="email"
                 class="form-tail mt-2"
                 placeholder="E-mail"
               />
-              <!-- <input
-                v-model="updateInputs.password"
-                type="password"
+              <input
+                v-model="updateInputs.cep"
+                type="text"
                 class="form-tail mt-2"
-                placeholder="Crie sua senha"
-              /> -->
+                placeholder="CEP"
+              />
+              <input
+                v-model="updateInputs.logradouro"
+                type="text"
+                class="form-tail mt-2"
+                placeholder="Logradouro"
+              />
+              <input
+                v-model="updateInputs.numero"
+                type="number"
+                class="form-tail mt-2"
+                placeholder="Nº"
+              />
+              <input
+                v-model="updateInputs.bairro"
+                type="text"
+                class="form-tail mt-2"
+                placeholder="Bairro"
+              />
+              <input
+                v-model="updateInputs.estado"
+                type="text"
+                class="form-tail mt-2"
+                placeholder="Estado"
+              />
+
+              <input
+                v-model="updateInputs.cnpj"
+                v-maska="'##.###.###/####-##'"
+                type="text"
+                class="form-tail mt-2"
+                placeholder="CNPJ"
+              />
+              <input
+                v-model="updateInputs.profissao"
+                type="text"
+                class="form-tail mt-2"
+                placeholder="Profissão"
+              />
+              <input
+                v-model="updateInputs.nreciboirpf"
+                type="number"
+                class="form-tail mt-2"
+                placeholder="N.Recibo IRPF"
+              />
+              <input
+                v-model="updateInputs.ie"
+                type="text"
+                class="form-tail mt-2"
+                placeholder="Inscrição Estadual"
+              />
+              <input
+                v-model="updateInputs.im"
+                type="text"
+                class="form-tail mt-2"
+                placeholder="Inscrição Municipal"
+              />
+              <input
+                v-model="updateInputs.senhacertificadodigital"
+                type="text"
+                class="form-tail mt-2"
+                placeholder="Senha Certificado Digital"
+              />
+              <input
+                v-model="updateInputs.contaoutrobanco"
+                type="text"
+                class="form-tail mt-2"
+                placeholder="Conta em outro banco"
+              />
               <div class="flex">
                 <div class="w-full md:w-1/2 px-1">
                   <router-link :to="{ name: 'Users' }">
