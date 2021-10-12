@@ -22,23 +22,8 @@ func RegisterRoutes() {
 
 	router.Post("/user", middlewares.CORSMiddleware, handlers.UserCreate)
 	router.Get("/user", middlewares.CORSMiddleware, middlewares.VerifyJwt, handlers.GetUser)
-		router.Get("/admin/users", middlewares.CORSMiddleware, middlewares.VerifyJwt, handlers.GetAllUsers)
-
-
-	// financial := router.Group("/financial/")
-	// // financial.Use(middlewares.VerifyJwt, middlewares.CORSMiddleware())
-	// {
-	// 	financial.Get("/categorias", middlewares.VerifyJwt, handlers.SelectCategoriesBilsToPay)
-	// 	financial.Get("/categoriasall", middlewares.VerifyJwt, handlers.SelectAllCategoriesBillsToPay)
-	// 	financial.Get("/viewcategories/:dataanomes", middlewares.VerifyJwt, handlers.GetCategoriesAndBillsMonth)
-	// 	// Bills to pay
-	// 	financial.Get("/contasall", middlewares.VerifyJwt, handlers.SelectAllBillsToPay)
-	// 	financial.Get("/editbills/:id/:dataanomes", middlewares.VerifyJwt, handlers.EditBillsToPayMonth)
-	// 	financial.Post("/billstopay", middlewares.VerifyJwt, handlers.StoreBillsToPay)
-	// 	financial.Put("/billstopay/:id/:dataanomes", middlewares.VerifyJwt, handlers.UpdateBillsToPay)
-	// 	financial.Post("/paidbills", middlewares.VerifyJwt, handlers.StorePaidBills)
-	// 	financial.Delete("/paidbills/:id", middlewares.VerifyJwt, handlers.DeletePaidBills)
-	// 	financial.Get("/paidbills/:id", middlewares.VerifyJwt, handlers.EditPaidBills)
-	// }
+	router.Get("/admin/users", middlewares.CORSMiddleware, middlewares.VerifyJwt, handlers.GetAllUsers)
+	router.Get("/admin/users/:id", middlewares.CORSMiddleware, middlewares.VerifyJwt, handlers.GetUserCliente)
+	router.Put("/admin/users/:id", middlewares.CORSMiddleware, middlewares.VerifyJwt, handlers.UserUpdate)
 
 }

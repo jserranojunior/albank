@@ -2,9 +2,10 @@
   <div class="my-2">
     <div class="flex flex-wrap justify-center pt-4">
       <div class="w-full sm:w-full md:w-1/2 lg:w-1/2 mx-auto px-6">
-        <span class="text-blue-600 font-bold text-center mb-4">Em desenvolvimento</span>
         <SCard>
-          <template #header> <span class="text-black"> Editando </span></template>
+          <template #header>
+            <span class="text-black font-bold"> Editando </span></template
+          >
           <template #body>
             <div class="mt-2">
               <input
@@ -39,12 +40,12 @@
                 class="form-tail mt-2"
                 placeholder="E-mail"
               />
-              <input
+              <!-- <input
                 v-model="updateInputs.password"
                 type="password"
                 class="form-tail mt-2"
                 placeholder="Crie sua senha"
-              />
+              /> -->
               <div class="flex">
                 <div class="w-full md:w-1/2 px-1">
                   <router-link :to="{ name: 'Users' }">
@@ -52,7 +53,12 @@
                   </router-link>
                 </div>
                 <div class="w-full md:w-1/2 px-1">
-                  <div class="btn-primary-tail mt-4" @click="update()">Enviar</div>
+                  <div
+                    class="btn-primary-tail mt-4"
+                    @click="updateUser(updateInputs, updateInputs.dtBirth)"
+                  >
+                    Salvar
+                  </div>
                 </div>
               </div>
             </div>
@@ -69,12 +75,9 @@ import { inject } from "vue";
 export default {
   // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
   setup() {
-    function update() {
-      alert("Em desenvolvimento");
-    }
     const useAuth = inject("users");
-    const { updateInputs } = useAuth;
-    return { updateInputs, update };
+    const { updateInputs, updateUser } = useAuth;
+    return { updateInputs, updateUser };
   },
 };
 </script>
