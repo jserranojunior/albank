@@ -3,22 +3,29 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import { AuthMiddleware } from "./middlewares/AuthMiddleware";
+import { adminAuthMiddleware } from "./middlewares/adminAuthMiddleware";
 
 import { colorMiddleware } from "./middlewares/colorMiddleware";
-const { auth, admin } = AuthMiddleware();
+const { auth } = AuthMiddleware();
+
+const { authadmin } = adminAuthMiddleware();
 
 const { changeColor } = colorMiddleware();
 
-// import Home from "../modules/institucional/home.vue";
-import Cadastro from "../modules/auth/pages/cadastro.vue";
-import FinanceiroIndex from "../modules/financeiro/pages/FinanceiroIndex.vue";
-import AdicionarConta from "../modules/financeiro/pages/AdicionarConta.vue";
-import EditarConta from "../modules/financeiro/pages/EditarConta.vue";
-import NotFound from "../views/layouts/NotFound.vue";
-import Login from "../modules/auth/pages/login.vue";
-import Home from "../modules/institucional/home.vue";
-import Users from "../modules/user/users.vue";
-import EditUser from "../modules/user/editUser.vue";
+// import Home from "@/modules/institucional/home.vue";
+import Cadastro from "@/modules/clientes/auth/pages/cadastro.vue";
+// import FinanceiroIndex from "@/modules/financeiro/pages/FinanceiroIndex.vue";
+// import AdicionarConta from "@/modules/financeiro/pages/AdicionarConta.vue";
+// import EditarConta from "@/modules/financeiro/pages/EditarConta.vue";
+import NotFound from "@/views/layouts/NotFound.vue";
+import Login from "@/modules/clientes/auth/pages/login.vue";
+import Home from "@/modules/clientes/institucional/home.vue";
+import Homeadm from "@/modules/admin/Homeadm.vue";
+
+import Users from "@/modules/admin/user/pages/users.vue";
+import EditUser from "@/modules/admin/user/components/editUser.vue";
+import LoginAdm from "@/modules/admin/authadm/pages/loginadm.vue";
+
 const routes = [
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
   {
@@ -28,16 +35,28 @@ const routes = [
     beforeEnter: [auth, changeColor],
   },
   {
-    path: "/users",
+    path: "/admin/users",
     name: "Users",
     component: Users,
-    beforeEnter: [auth, admin],
+    beforeEnter: [authadmin],
   },
   {
-    path: "/users/edit",
+    path: "/admin/users/edit",
     name: "EditUser",
     component: EditUser,
-    beforeEnter: [auth, admin],
+    beforeEnter: [authadmin],
+  },
+  {
+    path: "/admin",
+    name: "Admin",
+    component: Homeadm,
+    beforeEnter: [authadmin],
+  },
+  {
+    path: "/admin/login",
+    name: "LoginAdm",
+    component: LoginAdm,
+    beforeEnter: [authadmin],
   },
 
   {
@@ -62,24 +81,6 @@ const routes = [
     name: "Login",
     component: Login,
     beforeEnter: [auth, changeColor],
-  },
-
-  {
-    path: "/financeiro",
-    name: "Financeiro",
-    component: FinanceiroIndex,
-    beforeEnter: [auth],
-  },
-  {
-    path: "/financeiro/adicionarconta",
-    name: "FinanceiroAdd",
-    component: AdicionarConta,
-    beforeEnter: [auth],
-  },
-  {
-    path: "/financeiro/editarconta",
-    name: "FinanceiroEdit",
-    component: EditarConta,
   },
 ];
 

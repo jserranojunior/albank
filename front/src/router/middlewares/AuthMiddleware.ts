@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { useAuth } from "../../modules/auth/use/useAuth";
+import { useAuth } from "../../modules/clientes/auth/use/useAuth";
 import { RouteLocationNormalized } from "vue-router";
 
 // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
@@ -26,7 +26,7 @@ export const AuthMiddleware = () => {
   }
 
   async function admin(
-    to: RouteLocationNormalized,
+    _to: RouteLocationNormalized,
     _from: RouteLocationNormalized,
     next: Function
   ) {

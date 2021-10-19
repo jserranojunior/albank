@@ -11,6 +11,8 @@ func MigrateDB() {
 	db := database.Resolve()
 	// add your models to be auto migrated here
 	db.AutoMigrate(&User{})
+	db.AutoMigrate(&Admin{})
+
 	// db.AutoMigrate(&ContasAPagars{})
 	// db.AutoMigrate(&ValoresContasAPagars{})
 	// db.AutoMigrate(&ContasPagas{})
