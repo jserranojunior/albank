@@ -31,7 +31,9 @@ export const useAuthAdm = () => {
               console.log("resposta setToken" + response);
               if (response) {
                 state.authadm.data = "Logado com sucesso!";
-                state.logged = true;
+                if (state.authadm.tokenadm) {
+                  state.logged = true;
+                }
                 await getAdminID().then(async (res) => {
                   state.userID = res;
                   router.push({ name: "Admin" });
@@ -67,7 +69,9 @@ export const useAuthAdm = () => {
         localStorage.getItem("tokenadm") != undefined
       ) {
         token = String(localStorage.getItem("tokenadm"));
-        state.logged = true;
+        if (state.authadm.tokenadm) {
+          state.logged = true;
+        }
       } else {
         token = "";
         state.logged = false;
