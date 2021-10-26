@@ -28,5 +28,10 @@ func RegisterRoutes() {
 	router.Get("/admin/users", middlewares.CORSMiddleware, middlewares.VerifyJwt, handlers.GetAllUsers)
 	router.Get("/admin/users/:id", middlewares.CORSMiddleware, middlewares.VerifyJwt, handlers.GetUserCliente)
 	router.Put("/admin/users/:id", middlewares.CORSMiddleware, middlewares.VerifyJwt, handlers.UserUpdate)
+	// reset email
+	router.Get("/sendemailresetpwd/:email", middlewares.CORSMiddleware, handlers.SendMailResetPassword)
+	router.Get("/verifytokenemailreset/:token", middlewares.CORSMiddleware, handlers.VerifyTokenEmailReset)
+	router.Get("/testemail", middlewares.CORSMiddleware, handlers.TestEmail)
+	router.Put("/resetpassword/:token", middlewares.CORSMiddleware, handlers.ResetPassword)
 
 }

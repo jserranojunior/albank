@@ -26,6 +26,8 @@ import Users from "@/modules/admin/user/pages/users.vue";
 import EditUser from "@/modules/admin/user/components/editUser.vue";
 import LoginAdm from "@/modules/admin/authadm/pages/loginadm.vue";
 
+import EmailResetPassword from "@/modules/clientes/resetpassword/EmailResetPassword.vue";
+import ResetPasswordWithToken from "@/modules/clientes/resetpassword/ResetPasswordWithToken.vue";
 const routes = [
   { path: "/:pathMatch(.*)*", name: "NotFound", component: NotFound },
   {
@@ -81,6 +83,18 @@ const routes = [
     name: "Login",
     component: Login,
     beforeEnter: [auth, changeColor],
+  },
+
+  {
+    path: "/resetarsenha",
+    name: "Resetarsenha",
+    component: EmailResetPassword,
+  },
+
+  {
+    path: "/resetarsenha/:token",
+    name: "ResetarsenhaToken",
+    component: ResetPasswordWithToken,
   },
 ];
 

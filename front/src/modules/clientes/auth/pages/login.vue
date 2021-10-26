@@ -28,8 +28,9 @@
                   placeholder="Digite sua senha"
                 ></SInputP>
               </form>
-
-              <p class="underline text-right text-sm">esqueci minha senha</p>
+              <router-link to="/resetarsenha">
+                <p class="underline text-right text-sm">esqueci minha senha</p>
+              </router-link>
               <SBtn class="btn-primary-tail" value="Entrar" @click="Login()">Entrar</SBtn>
             </div>
           </div>

@@ -1,5 +1,7 @@
 import { provide } from "vue";
 import { useAuth } from "@/modules/clientes/auth/use/useAuth";
+import { useResetPassword } from "@/modules/clientes/resetpassword/use/useResetPassword";
+
 import { useUsers } from "@/modules/admin/user/use/useUsers";
 
 import { useInstitucional } from "@/modules/clientes/institucional/use/useInstitucional";
@@ -17,4 +19,5 @@ export const Provides = () => {
   provide("apiconnect", ApiConnect);
   provide("institucional", useInstitucional());
   provide("users", useUsers());
+  provide("resetpassword", useResetPassword());
 };
