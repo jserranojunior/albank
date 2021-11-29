@@ -13,9 +13,9 @@
     "dayjs": "^1.10.4",
     "maska": "^1.4.5",
     "primevue": "^3.7.1",
+    "slifer": "github:jserranojunior/slifer#0.0.21",
     "vue": "^3.0.5",
-    "vue-router": "^4.0.3",
-    "slifer": "github:jserranojunior/slifer#0.0.20"
+    "vue-router": "^4.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.13.14",

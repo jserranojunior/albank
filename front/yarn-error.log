@@ -1,25 +1,20 @@
 Arguments: 
-  /usr/bin/node /usr/share/yarn/bin/yarn.js test
+  /usr/bin/node /usr/bin/yarn upgrade
 
 PATH: 
-  /usr/local/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/local/go/bin:/usr/local/go/bin
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin
 
 Yarn version: 
-  1.22.5
+  1.22.15
 
 Node version: 
-  15.13.0
+  16.11.1
 
 Platform: 
   linux x64
 
 Trace: 
-  SyntaxError: /home/alvitre/Developer/Pessoal/intellect/front/package.json: Unexpected token / in JSON at position 395
-      at JSON.parse (<anonymous>)
-      at /usr/share/yarn/lib/cli.js:1625:59
-      at Generator.next (<anonymous>)
-      at step (/usr/share/yarn/lib/cli.js:310:30)
-      at /usr/share/yarn/lib/cli.js:321:13
+  Error: EBUSY: resource busy or locked, unlink '/mnt/wolf/files/Developer/albank/front/node_modules/esbuild/bin/.nfs00000000029600090000000b'
 
 npm manifest: 
   {
@@ -27,7 +22,7 @@ npm manifest:
     "version": "0.0.0",
     "scripts": {
       "dev": "vite",
-      "build": "vue-tsc --noEmit && vite build",
+      "build": "vite build --mode production",
       "serve": "vite preview",
       "lint:script": "eslint --ext .ts,vue --ignore-path .gitignore .",
       "test": "jest"
@@ -35,23 +30,29 @@ npm manifest:
     "dependencies": {
       "axios": "^0.21.1",
       "dayjs": "^1.10.4",
+      "maska": "^1.4.5",
+      "primevue": "^3.7.1",
       "vue": "^3.0.5",
-      "vue-router": "^4.0.3"
+      "vue-router": "^4.0.3",
+      "slifer": "github:jserranojunior/slifer#0.0.21"
     },
     "devDependencies": {
-      // "@babel/core": "^7.13.14",
-      // "@babel/preset-env": "^7.13.12",
-      "@babel/preset-typescript": "^7.13.0",
+      "@babel/core": "^7.13.14",
+      "@babel/preset-env": "^7.13.12",
       "@types/jest": "^26.0.22",
       "@types/mocha": "^8.2.2",
       "@types/node": "^14.14.37",
+      "@types/pino": "^6.3.6",
       "@typescript-eslint/eslint-plugin": "^4.20.0",
       "@typescript-eslint/parser": "^4.20.0",
       "@vitejs/plugin-vue": "^1.2.1",
       "@vue/compiler-sfc": "^3.0.5",
       "@vue/eslint-config-prettier": "^6.0.0",
       "@vue/eslint-config-typescript": "^7.0.0",
+      "@vue/test-utils": "^2.0.0-rc.4",
       "autoprefixer": "^10.2.5",
+      "babel-jest": "^26.6.3",
+      "dotenv": "^8.2.0",
       "eslint": "^7.23.0",
       "eslint-plugin-prettier": "^3.3.1",
       "eslint-plugin-vue": "^7.8.0",
@@ -62,7 +63,17 @@ npm manifest:
       "ts-jest": "^26.5.4",
       "typescript": "^4.2.3",
       "vite": "^2.1.5",
+      "vite-plugin-env-compatible": "^0.2.1",
+      "vue-jest": "^5.0.0-alpha.8",
       "vue-tsc": "^0.0.15"
+    },
+    "jest": {
+      "moduleNameMapper": {
+        "@": "<rootDir>/src/"
+      },
+      "setupFiles": [
+        "dotenv/config"
+      ]
     }
   }
 
@@ -292,10 +303,10 @@ Lockfile:
     dependencies:
       "@babel/types" "^7.12.13"
   
-  "@babel/helper-validator-identifier@^7.12.11":
-    version "7.12.11"
-    resolved "https://registry.yarnpkg.com/@babel/helper-validator-identifier/-/helper-validator-identifier-7.12.11.tgz"
-    integrity sha512-np/lG3uARFybkoHokJUmf1QfEvRVCPbmQeUQpKow5cQ3xWrV9i3rUHodKDJPQfTVX61qKi+UdYk8kik84n7XOw==
+  "@babel/helper-validator-identifier@^7.12.11", "@babel/helper-validator-identifier@^7.14.9":
+    version "7.14.9"
+    resolved "https://registry.npmjs.org/@babel/helper-validator-identifier/-/helper-validator-identifier-7.14.9.tgz"
+    integrity sha512-pQYxPY0UP6IHISRitNe8bsijHex4TWZXi2HwKVsjPiltzlhse2znVcm9Ace510VT1kxIHjGJCZZQBX2gJDbo0g==
   
   "@babel/helper-validator-option@^7.12.17":
     version "7.12.17"
@@ -331,9 +342,9 @@ Lockfile:
       js-tokens "^4.0.0"
   
   "@babel/parser@^7.1.0", "@babel/parser@^7.12.0", "@babel/parser@^7.12.13", "@babel/parser@^7.13.13", "@babel/parser@^7.13.9":
-    version "7.13.13"
-    resolved "https://registry.yarnpkg.com/@babel/parser/-/parser-7.13.13.tgz"
-    integrity sha512-OhsyMrqygfk5v8HmWwOzlYjJrtLaFhF34MrfG/Z73DgYCI6ojNUTUp2TYbtnjo8PegeJp12eamsNettCQjKjVw==
+    version "7.15.5"
+    resolved "https://registry.npmjs.org/@babel/parser/-/parser-7.15.5.tgz"
+    integrity sha512-2hQstc6I7T6tQsWzlboMh3SgMRPaS4H6H7cPQsJkdzTzEGqQrpLDsE2BGASU5sBPoEQyHzeqU6C8uKbFeEk6sg==
   
   "@babel/plugin-bugfix-v8-spread-parameters-in-optional-chaining@^7.13.12":
     version "7.13.12"
@@ -551,13 +562,6 @@ Lockfile:
     dependencies:
       "@babel/helper-plugin-utils" "^7.12.13"
   
-  "@babel/plugin-syntax-typescript@^7.12.13":
-    version "7.12.13"
-    resolved "https://registry.npmjs.org/@babel/plugin-syntax-typescript/-/plugin-syntax-typescript-7.12.13.tgz"
-    integrity sha512-cHP3u1JiUiG2LFDKbXnwVad81GvfyIOmCD6HIEId6ojrY0Drfy2q1jw7BwN7dE84+kTnBjLkXoL3IEy/3JPu2w==
-    dependencies:
-      "@babel/helper-plugin-utils" "^7.12.13"
-  
   "@babel/plugin-transform-arrow-functions@^7.13.0":
     version "7.13.0"
     resolved "https://registry.npmjs.org/@babel/plugin-transform-arrow-functions/-/plugin-transform-arrow-functions-7.13.0.tgz"
@@ -676,7 +680,7 @@ Lockfile:
       "@babel/helper-plugin-utils" "^7.13.0"
       babel-plugin-dynamic-import-node "^2.3.3"
   
-  "@babel/plugin-transform-modules-commonjs@^7.13.8":
+  "@babel/plugin-transform-modules-commonjs@^7.13.8", "@babel/plugin-transform-modules-commonjs@^7.2.0":
     version "7.13.8"
     resolved "https://registry.npmjs.org/@babel/plugin-transform-modules-commonjs/-/plugin-transform-modules-commonjs-7.13.8.tgz"
     integrity sha512-9QiOx4MEGglfYZ4XOnU79OHr6vIWUakIj9b4mioN8eQIoEh+pf5p/zEB36JpDFWA12nNMiRf7bfoRvl9Rn79Bw==
@@ -791,15 +795,6 @@ Lockfile:
     dependencies:
       "@babel/helper-plugin-utils" "^7.12.13"
   
-  "@babel/plugin-transform-typescript@^7.13.0":
-    version "7.13.0"
-    resolved "https://registry.npmjs.org/@babel/plugin-transform-typescript/-/plugin-transform-typescript-7.13.0.tgz"
-    integrity sha512-elQEwluzaU8R8dbVuW2Q2Y8Nznf7hnjM7+DSCd14Lo5fF63C9qNLbwZYbmZrtV9/ySpSUpkRpQXvJb6xyu4hCQ==
-    dependencies:
-      "@babel/helper-create-class-features-plugin" "^7.13.0"
-      "@babel/helper-plugin-utils" "^7.13.0"
-      "@babel/plugin-syntax-typescript" "^7.12.13"
-  
   "@babel/plugin-transform-unicode-escapes@^7.12.13":
     version "7.12.13"
     resolved "https://registry.npmjs.org/@babel/plugin-transform-unicode-escapes/-/plugin-transform-unicode-escapes-7.12.13.tgz"
@@ -901,15 +896,6 @@ Lockfile:
       "@babel/types" "^7.4.4"
       esutils "^2.0.2"
   
-  "@babel/preset-typescript@^7.13.0":
-    version "7.13.0"
-    resolved "https://registry.yarnpkg.com/@babel/preset-typescript/-/preset-typescript-7.13.0.tgz#ab107e5f050609d806fbb039bec553b33462c60a"
-    integrity sha512-LXJwxrHy0N3f6gIJlYbLta1D9BDtHpQeqwzM0LIfjDlr6UE/D5Mc7W4iDiQzaE+ks0sTjT26ArcHWnJVt0QiHw==
-    dependencies:
-      "@babel/helper-plugin-utils" "^7.13.0"
-      "@babel/helper-validator-option" "^7.12.17"
-      "@babel/plugin-transform-typescript" "^7.13.0"
-  
   "@babel/runtime@^7.8.4":
     version "7.13.10"
     resolved "https://registry.npmjs.org/@babel/runtime/-/runtime-7.13.10.tgz"
@@ -941,12 +927,11 @@ Lockfile:
       globals "^11.1.0"
   
   "@babel/types@^7.0.0", "@babel/types@^7.12.0", "@babel/types@^7.12.1", "@babel/types@^7.12.13", "@babel/types@^7.13.0", "@babel/types@^7.13.12", "@babel/types@^7.13.13", "@babel/types@^7.13.14", "@babel/types@^7.3.0", "@babel/types@^7.3.3", "@babel/types@^7.4.4":
-    version "7.13.14"
-    resolved "https://registry.yarnpkg.com/@babel/types/-/types-7.13.14.tgz"
-    integrity sha512-A2aa3QTkWoyqsZZFl56MLUsfmh7O0gN41IPvXAE/++8ojpbz12SszD7JEGYVdn4f9Kt4amIei07swF1h4AqmmQ==
+    version "7.15.4"
+    resolved "https://registry.npmjs.org/@babel/types/-/types-7.15.4.tgz"
+    integrity sha512-0f1HJFuGmmbrKTCZtbm3cU+b/AqdEYk5toj5iQur58xkVMlS0JWaKxTBSmCXd47uiN7vbcozAupm6Mvs80GNhw==
     dependencies:
-      "@babel/helper-validator-identifier" "^7.12.11"
-      lodash "^4.17.19"
+      "@babel/helper-validator-identifier" "^7.14.9"
       to-fast-properties "^2.0.0"
   
   "@bcoe/v8-coverage@^0.2.3":
@@ -1160,6 +1145,27 @@ Lockfile:
       source-map "^0.6.1"
       write-file-atomic "^3.0.0"
   
+  "@jest/transform@^27.3.1":
+    version "27.3.1"
+    resolved "https://registry.yarnpkg.com/@jest/transform/-/transform-27.3.1.tgz#ff80eafbeabe811e9025e4b6f452126718455220"
+    integrity sha512-3fSvQ02kuvjOI1C1ssqMVBKJpZf6nwoCiSu00zAKh5nrp3SptNtZy/8s5deayHnqxhjD9CWDJ+yqQwuQ0ZafXQ==
+    dependencies:
+      "@babel/core" "^7.1.0"
+      "@jest/types" "^27.2.5"
+      babel-plugin-istanbul "^6.0.0"
+      chalk "^4.0.0"
+      convert-source-map "^1.4.0"
+      fast-json-stable-stringify "^2.0.0"
+      graceful-fs "^4.2.4"
+      jest-haste-map "^27.3.1"
+      jest-regex-util "^27.0.6"
+      jest-util "^27.3.1"
+      micromatch "^4.0.4"
+      pirates "^4.0.1"
+      slash "^3.0.0"
+      source-map "^0.6.1"
+      write-file-atomic "^3.0.0"
+  
   "@jest/types@^26.6.2":
     version "26.6.2"
     resolved "https://registry.npmjs.org/@jest/types/-/types-26.6.2.tgz"
@@ -1169,6 +1175,17 @@ Lockfile:
       "@types/istanbul-reports" "^3.0.0"
       "@types/node" "*"
       "@types/yargs" "^15.0.0"
+      chalk "^4.0.0"
+  
+  "@jest/types@^27.2.5":
+    version "27.2.5"
+    resolved "https://registry.yarnpkg.com/@jest/types/-/types-27.2.5.tgz#420765c052605e75686982d24b061b4cbba22132"
+    integrity sha512-nmuM4VuDtCZcY+eTpw+0nvstwReMsjPoj7ZR80/BbixulhLaiX+fbv8oeLW8WZlJMcsGQsTmMKT/iTZu1Uy/lQ==
+    dependencies:
+      "@types/istanbul-lib-coverage" "^2.0.0"
+      "@types/istanbul-reports" "^3.0.0"
+      "@types/node" "*"
+      "@types/yargs" "^16.0.0"
       chalk "^4.0.0"
   
   "@nodelib/fs.scandir@2.1.4":
@@ -1210,6 +1227,17 @@ Lockfile:
     version "7.1.14"
     resolved "https://registry.npmjs.org/@types/babel__core/-/babel__core-7.1.14.tgz"
     integrity sha512-zGZJzzBUVDo/eV6KgbE0f0ZI7dInEYvo12Rb70uNQDshC3SkRMb67ja0GgRHZgAX3Za6rhaWlvbDO8rrGyAb1g==
+    dependencies:
+      "@babel/parser" "^7.1.0"
+      "@babel/types" "^7.0.0"
+      "@types/babel__generator" "*"
+      "@types/babel__template" "*"
+      "@types/babel__traverse" "*"
+  
+  "@types/babel__core@^7.1.14":
+    version "7.1.16"
+    resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.16.tgz#bc12c74b7d65e82d29876b5d0baf5c625ac58702"
+    integrity sha512-EAEHtisTMM+KaKwfWdC3oyllIqswlznXCIVCt7/oRNrh+DhgT4UEBNC/jlADNjvw7UnfbcdkGQcPVZ1xYiLcrQ==
     dependencies:
       "@babel/parser" "^7.1.0"
       "@babel/types" "^7.0.0"
@@ -1267,7 +1295,7 @@ Lockfile:
   
   "@types/jest@^26.0.22":
     version "26.0.22"
-    resolved "https://registry.yarnpkg.com/@types/jest/-/jest-26.0.22.tgz#8308a1debdf1b807aa47be2838acdcd91e88fbe6"
+    resolved "https://registry.npmjs.org/@types/jest/-/jest-26.0.22.tgz"
     integrity sha512-eeWwWjlqxvBxc4oQdkueW5OF/gtfSceKk4OnOAGlUSwS/liBRtZppbJuz1YkgbrbfGOoeBHun9fOvXnjNwrSOw==
     dependencies:
       jest-diff "^26.0.0"
@@ -1293,15 +1321,48 @@ Lockfile:
     resolved "https://registry.npmjs.org/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz"
     integrity sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==
   
+  "@types/pino-std-serializers@*":
+    version "2.4.1"
+    resolved "https://registry.npmjs.org/@types/pino-std-serializers/-/pino-std-serializers-2.4.1.tgz"
+    integrity sha512-17XcksO47M24IVTVKPeAByWUd3Oez7EbIjXpSbzMPhXVzgjGtrOa49gKBwxH9hb8dKv58OelsWQ+A1G1l9S3wQ==
+    dependencies:
+      "@types/node" "*"
+  
+  "@types/pino@^6.3.6":
+    version "6.3.6"
+    resolved "https://registry.npmjs.org/@types/pino/-/pino-6.3.6.tgz"
+    integrity sha512-yVgSyMGzNDYe/XNMJyuIkklDeZbFdGAxRztYLoN1QQrrgiLJ1oJPmnS8Ge5xpzI9ODKEddKH97VFQ7cWO6Pumw==
+    dependencies:
+      "@types/node" "*"
+      "@types/pino-std-serializers" "*"
+      "@types/sonic-boom" "*"
+  
   "@types/prettier@^2.0.0":
     version "2.2.3"
     resolved "https://registry.npmjs.org/@types/prettier/-/prettier-2.2.3.tgz"
     integrity sha512-PijRCG/K3s3w1We6ynUKdxEc5AcuuH3NBmMDP8uvKVp6X43UY7NQlTzczakXP3DJR0F4dfNQIGjU2cUeRYs2AA==
   
+  "@types/sonic-boom@*":
+    version "0.7.0"
+    resolved "https://registry.npmjs.org/@types/sonic-boom/-/sonic-boom-0.7.0.tgz"
+    integrity sha512-AfqR0fZMoUXUNwusgXKxcE9DPlHNDHQp6nKYUd4PSRpLobF5CCevSpyTEBcVZreqaWKCnGBr9KI1fHMTttoB7A==
+    dependencies:
+      "@types/node" "*"
+  
   "@types/stack-utils@^2.0.0":
     version "2.0.0"
     resolved "https://registry.npmjs.org/@types/stack-utils/-/stack-utils-2.0.0.tgz"
     integrity sha512-RJJrrySY7A8havqpGObOB4W92QXKJo63/jFLLgpvOtsGUqbQZ9Sbgl35KMm1DjC6j7AvmmU2bIno+3IyEaemaw==
+  
+  "@types/strip-bom@^3.0.0":
+    version "3.0.0"
+    resolved "https://registry.npmjs.org/@types/strip-bom/-/strip-bom-3.0.0.tgz"
+    integrity sha1-FKjsOVbC6B7bdSB5CuzyHCkK69I=
+  
+  "@types/strip-json-comments@0.0.30":
+    version "0.0.30"
+    resolved "https://registry.npmjs.org/@types/strip-json-comments/-/strip-json-comments-0.0.30.tgz"
+    integrity sha512-7NQmHra/JILCd1QqpSzl8+mJRc8ZHz3uDm8YV1Ks9IhK0epEiTw8aIErbvH9PI+6XbqhyIQy3462nEsn7UVzjQ==
   
   "@types/yargs-parser@*":
     version "20.2.0"
@@ -1312,6 +1373,13 @@ Lockfile:
     version "15.0.13"
     resolved "https://registry.npmjs.org/@types/yargs/-/yargs-15.0.13.tgz"
     integrity sha512-kQ5JNTrbDv3Rp5X2n/iUu37IJBDU2gsZ5R/g1/KHOOEc5IKfUFjXT6DENPGduh08I/pamwtEq4oul7gUqKTQDQ==
+    dependencies:
+      "@types/yargs-parser" "*"
+  
+  "@types/yargs@^16.0.0":
+    version "16.0.4"
+    resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-16.0.4.tgz#26aad98dd2c2a38e421086ea9ad42b9e51642977"
+    integrity sha512-T8Yc9wt/5LbJyCaLiHPReJa0kApcIgJ7Bn735GjItUfh08Z1pJvu8QZqb9s+mMvKV6WUQRV7K2R46YbjMXTTJw==
     dependencies:
       "@types/yargs-parser" "*"
   
@@ -1481,6 +1549,11 @@ Lockfile:
     version "3.0.10"
     resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.0.10.tgz"
     integrity sha512-p8GJ+bGpEGiEHICwcCH/EtJnkZQllrOfm1J2J+Ep0ydMte25bPnArgrY/h2Tn1LKqqR3LXyQlOSYY6gJgiW2LQ==
+  
+  "@vue/test-utils@^2.0.0-rc.4":
+    version "2.0.0-rc.4"
+    resolved "https://registry.npmjs.org/@vue/test-utils/-/test-utils-2.0.0-rc.4.tgz"
+    integrity sha512-DocrrFP28M7NO7y7iGiX9sf9n1AKEqkxXO5wedtp5FkHiAkc0xfmD4lvxgi4re5+xw7Zzb9U/vrhXKQZ0I4Q9g==
   
   abab@^2.0.3, abab@^2.0.5:
     version "2.0.5"
@@ -1703,6 +1776,20 @@ Lockfile:
       graceful-fs "^4.2.4"
       slash "^3.0.0"
   
+  babel-jest@^27.3.1:
+    version "27.3.1"
+    resolved "https://registry.yarnpkg.com/babel-jest/-/babel-jest-27.3.1.tgz#0636a3404c68e07001e434ac4956d82da8a80022"
+    integrity sha512-SjIF8hh/ir0peae2D6S6ZKRhUy7q/DnpH7k/V6fT4Bgs/LXXUztOpX4G2tCgq8mLo5HA9mN6NmlFMeYtKmIsTQ==
+    dependencies:
+      "@jest/transform" "^27.3.1"
+      "@jest/types" "^27.2.5"
+      "@types/babel__core" "^7.1.14"
+      babel-plugin-istanbul "^6.0.0"
+      babel-preset-jest "^27.2.0"
+      chalk "^4.0.0"
+      graceful-fs "^4.2.4"
+      slash "^3.0.0"
+  
   babel-plugin-dynamic-import-node@^2.3.3:
     version "2.3.3"
     resolved "https://registry.npmjs.org/babel-plugin-dynamic-import-node/-/babel-plugin-dynamic-import-node-2.3.3.tgz"
@@ -1725,6 +1812,16 @@ Lockfile:
     version "26.6.2"
     resolved "https://registry.npmjs.org/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-26.6.2.tgz"
     integrity sha512-PO9t0697lNTmcEHH69mdtYiOIkkOlj9fySqfO3K1eCcdISevLAE0xY59VLLUj0SoiPiTX/JU2CYFpILydUa5Lw==
+    dependencies:
+      "@babel/template" "^7.3.3"
+      "@babel/types" "^7.3.3"
+      "@types/babel__core" "^7.0.0"
+      "@types/babel__traverse" "^7.0.6"
+  
+  babel-plugin-jest-hoist@^27.2.0:
+    version "27.2.0"
+    resolved "https://registry.yarnpkg.com/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-27.2.0.tgz#79f37d43f7e5c4fdc4b2ca3e10cc6cf545626277"
+    integrity sha512-TOux9khNKdi64mW+0OIhcmbAn75tTlzKhxmiNXevQaPbrBYK7YKjP1jl6NHTJ6XR5UgUrJbCnWlKVnJn29dfjw==
     dependencies:
       "@babel/template" "^7.3.3"
       "@babel/types" "^7.3.3"
@@ -1779,6 +1876,14 @@ Lockfile:
     integrity sha512-YvdtlVm9t3k777c5NPQIv6cxFFFapys25HiUmuSgHwIZhfifweR5c5Sf5nwE3MAbfu327CYSvps8Yx6ANLyleQ==
     dependencies:
       babel-plugin-jest-hoist "^26.6.2"
+      babel-preset-current-node-syntax "^1.0.0"
+  
+  babel-preset-jest@^27.2.0:
+    version "27.2.0"
+    resolved "https://registry.yarnpkg.com/babel-preset-jest/-/babel-preset-jest-27.2.0.tgz#556bbbf340608fed5670ab0ea0c8ef2449fba885"
+    integrity sha512-z7MgQ3peBwN5L5aCqBKnF6iqdlvZvFUQynEhu0J+X9nHLU72jO3iY331lcYrg+AssJ8q7xsv5/3AICzVmJ/wvg==
+    dependencies:
+      babel-plugin-jest-hoist "^27.2.0"
       babel-preset-current-node-syntax "^1.0.0"
   
   balanced-match@^1.0.0:
@@ -1871,15 +1976,15 @@ Lockfile:
     integrity sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow==
   
   browserslist@^4.14.5, browserslist@^4.16.3:
-    version "4.16.3"
-    resolved "https://registry.npmjs.org/browserslist/-/browserslist-4.16.3.tgz"
-    integrity sha512-vIyhWmIkULaq04Gt93txdh+j02yX/JzlyhLYbV3YQCn/zvES3JnY7TifHHvvr1w5hTDluNKMkV05cs4vy8Q7sw==
+    version "4.17.2"
+    resolved "https://registry.npmjs.org/browserslist/-/browserslist-4.17.2.tgz"
+    integrity sha512-jSDZyqJmkKMEMi7SZAgX5UltFdR5NAO43vY0AwTpu4X3sGH7GLLQ83KiUomgrnvZRCeW0yPPnKqnxPqQOER9zQ==
     dependencies:
-      caniuse-lite "^1.0.30001181"
-      colorette "^1.2.1"
-      electron-to-chromium "^1.3.649"
+      caniuse-lite "^1.0.30001261"
+      electron-to-chromium "^1.3.854"
       escalade "^3.1.1"
-      node-releases "^1.1.70"
+      nanocolors "^0.2.12"
+      node-releases "^1.1.76"
   
   bs-logger@0.x:
     version "0.2.6"
@@ -1958,10 +2063,10 @@ Lockfile:
     resolved "https://registry.npmjs.org/camelcase/-/camelcase-6.2.0.tgz"
     integrity sha512-c7wVvbw3f37nuobQNtgsgG9POC9qMbNuMQmTCqZv23b6MIz0fcYpBiOlv9gEN/hdLdnZTDQhg6e9Dq5M1vKvfg==
   
-  caniuse-lite@^1.0.30001181, caniuse-lite@^1.0.30001196:
-    version "1.0.30001205"
-    resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001205.tgz"
-    integrity sha512-TL1GrS5V6LElbitPazidkBMD9sa448bQDDLrumDqaggmKFcuU2JW1wTOHJPukAcOMtEmLcmDJEzfRrf+GjM0Og==
+  caniuse-lite@^1.0.30001196, caniuse-lite@^1.0.30001261:
+    version "1.0.30001263"
+    resolved "https://registry.npmjs.org/caniuse-lite/-/caniuse-lite-1.0.30001263.tgz"
+    integrity sha512-doiV5dft6yzWO1WwU19kt8Qz8R0/8DgEziz6/9n2FxUasteZNwNNYSmJO3GLBH8lCVE73AB1RPDPAeYbcO5Cvw==
   
   capture-exit@^2.0.0:
     version "2.0.0"
@@ -1982,7 +2087,7 @@ Lockfile:
     dependencies:
       traverse ">=0.3.0 <0.4"
   
-  chalk@^2.0.0, chalk@^2.4.1:
+  chalk@^2.0.0, chalk@^2.1.0, chalk@^2.4.1:
     version "2.4.2"
     resolved "https://registry.npmjs.org/chalk/-/chalk-2.4.2.tgz"
     integrity sha512-Mti+f9lpJNcwF4tWV8/OrTTtF1gZi+f8FqlyAdouralcFWFQWF2+NgCHShjkCb+IFBLq9buZwE1xckQU4peSuQ==
@@ -2008,6 +2113,11 @@ Lockfile:
     version "2.0.0"
     resolved "https://registry.npmjs.org/ci-info/-/ci-info-2.0.0.tgz"
     integrity sha512-5tK7EtrZ0N+OLFMthtqOj4fI2Jeb88C4CAZPu25LDVUgXJ0A3Js4PMGqrn0JU1W0Mh1/Z8wZzYPxqUrXeBboCQ==
+  
+  ci-info@^3.2.0:
+    version "3.2.0"
+    resolved "https://registry.yarnpkg.com/ci-info/-/ci-info-3.2.0.tgz#2876cb948a498797b5236f0095bc057d0dca38b6"
+    integrity sha512-dVqRX7fLUm8J6FgHJ418XuIgDLZDkYcDFTeL6TA2gt5WlIZUQrrH6EZrNClwT/H0FateUsZkGIOPRrLbP+PR9A==
   
   cjs-module-lexer@^0.6.0:
     version "0.6.0"
@@ -2091,7 +2201,7 @@ Lockfile:
       color-convert "^1.9.1"
       color-string "^1.5.4"
   
-  colorette@^1.2.1, colorette@^1.2.2:
+  colorette@^1.2.2:
     version "1.2.2"
     resolved "https://registry.yarnpkg.com/colorette/-/colorette-1.2.2.tgz"
     integrity sha512-MKGMzyfeuutC/ZJ1cba9NqcNpfeqMUcYmyF1ZFY6/Cn7CNSAKx6a+s48sqLqyAiZuaP2TcqMhoo+dlwFnVxT9w==
@@ -2174,6 +2284,16 @@ Lockfile:
     version "1.1.2"
     resolved "https://registry.npmjs.org/css-unit-converter/-/css-unit-converter-1.1.2.tgz"
     integrity sha512-IiJwMC8rdZE0+xiEZHeru6YoONC4rfPMqGm2W85jMIbkFvv5nFTwJVFHam2eFrN6txmoUYFAFXiv8ICVeTO0MA==
+  
+  css@^2.1.0:
+    version "2.2.4"
+    resolved "https://registry.npmjs.org/css/-/css-2.2.4.tgz"
+    integrity sha512-oUnjmWpy0niI3x/mPL8dVEI1l7MnG3+HHyRPHf+YFSbK+svOhXpmSOcDURUh2aOCgl2grzrOPt1nHLuCVFULLw==
+    dependencies:
+      inherits "^2.0.3"
+      source-map "^0.6.1"
+      source-map-resolve "^0.5.2"
+      urix "^0.1.0"
   
   cssesc@^3.0.0:
     version "3.0.0"
@@ -2346,6 +2466,11 @@ Lockfile:
     dependencies:
       webidl-conversions "^5.0.0"
   
+  dotenv@^8.2.0:
+    version "8.2.0"
+    resolved "https://registry.npmjs.org/dotenv/-/dotenv-8.2.0.tgz"
+    integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
+  
   duplexer2@~0.1.4:
     version "0.1.4"
     resolved "https://registry.yarnpkg.com/duplexer2/-/duplexer2-0.1.4.tgz"
@@ -2361,10 +2486,15 @@ Lockfile:
       jsbn "~0.1.0"
       safer-buffer "^2.1.0"
   
-  electron-to-chromium@^1.3.649:
-    version "1.3.704"
-    resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.704.tgz"
-    integrity sha512-6cz0jvawlUe4h5AbfQWxPzb+8LzVyswGAWiGc32EJEmfj39HTQyNPkLXirc7+L4x5I6RgRkzua8Ryu5QZqc8cA==
+  electron-to-chromium@^1.3.854:
+    version "1.3.857"
+    resolved "https://registry.npmjs.org/electron-to-chromium/-/electron-to-chromium-1.3.857.tgz"
+    integrity sha512-a5kIr2lajm4bJ5E4D3fp8Y/BRB0Dx2VOcCRE5Gtb679mXIME/OFhWler8Gy2ksrf8gFX+EFCSIGA33FB3gqYpg==
+  
+  element-plus@*:
+    version "1.0.0"
+    resolved "https://registry.yarnpkg.com/element-plus/-/element-plus-1.0.0.tgz#eabae451d2d79eba7aa088a8d948386654f59101"
+    integrity sha512-1FFYxn9RSMMdUxym//XyrdqPyppD15fE9T3+QccVcB0yKxhDfGVMfZiDrLeqJvO1YLO9qkz1jzhRZ1I+ot9ZZw==
   
   emittery@^0.7.1:
     version "0.7.2"
@@ -2680,6 +2810,13 @@ Lockfile:
       snapdragon "^0.8.1"
       to-regex "^3.0.1"
   
+  extract-from-css@^0.4.4:
+    version "0.4.4"
+    resolved "https://registry.npmjs.org/extract-from-css/-/extract-from-css-0.4.4.tgz"
+    integrity sha1-HqffLnx8brmSL6COitrqSG9vj5I=
+    dependencies:
+      css "^2.1.0"
+  
   extsprintf@1.3.0, extsprintf@^1.2.0:
     version "1.3.0"
     resolved "https://registry.npmjs.org/extsprintf/-/extsprintf-1.3.0.tgz"
@@ -2827,9 +2964,9 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz"
     integrity sha1-FQStJSMVjKpA20onh8sBQRmU6k8=
   
-  fsevents@^2.1.2, fsevents@~2.3.1:
+  fsevents@^2.1.2, fsevents@^2.3.2, fsevents@~2.3.1:
     version "2.3.2"
-    resolved "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
+    resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.2.tgz#8a526f78b8fdf4623b709e0b975c52c24c02fd1a"
     integrity sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA==
   
   fstream@^1.0.12:
@@ -3046,9 +3183,9 @@ Lockfile:
     integrity sha512-WdZTbAByD+pHfl/g9QSsBIIwy8IT+EsPiKDs0KNX+zSHhdDLFKdZu0BQHljvO+0QI/BasbMSUa8wYNCZTvhslg==
   
   hosted-git-info@^2.1.4:
-    version "2.8.8"
-    resolved "https://registry.npmjs.org/hosted-git-info/-/hosted-git-info-2.8.8.tgz"
-    integrity sha512-f/wzC2QaWBs7t9IYqB4T3sR1xviIViXJRJTWBlx2Gf3g0Xi5vI7Yy4koXQ1c9OYDGHN9sBy1DQ2AB8fqZBWhUg==
+    version "2.8.9"
+    resolved "https://registry.npmjs.org/hosted-git-info/-/hosted-git-info-2.8.9.tgz"
+    integrity sha512-mxIDAb9Lsm6DoOJ7xH+5+X4y1LU/4Hi50L9C5sIswK3JzULS4bwk1FvjdBgvYR4bzT4tuUQiC15FE2f5HbLvYw==
   
   html-encoding-sniffer@^2.0.1:
     version "2.0.1"
@@ -3142,7 +3279,7 @@ Lockfile:
       once "^1.3.0"
       wrappy "1"
   
-  inherits@2, inherits@~2.0.0, inherits@~2.0.3:
+  inherits@2, inherits@^2.0.3, inherits@~2.0.0, inherits@~2.0.3:
     version "2.0.4"
     resolved "https://registry.yarnpkg.com/inherits/-/inherits-2.0.4.tgz"
     integrity sha512-k/vGaX4/Yla3WzyMCvTQOXYeIHvqOKtnqBduzTHpzpQZzAskKMhZ2K+EnBiSM9zGSoIFeMpXKxa4dYeZIQqewQ==
@@ -3528,6 +3665,26 @@ Lockfile:
     optionalDependencies:
       fsevents "^2.1.2"
   
+  jest-haste-map@^27.3.1:
+    version "27.3.1"
+    resolved "https://registry.yarnpkg.com/jest-haste-map/-/jest-haste-map-27.3.1.tgz#7656fbd64bf48bda904e759fc9d93e2c807353ee"
+    integrity sha512-lYfNZIzwPccDJZIyk9Iz5iQMM/MH56NIIcGj7AFU1YyA4ewWFBl8z+YPJuSCRML/ee2cCt2y3W4K3VXPT6Nhzg==
+    dependencies:
+      "@jest/types" "^27.2.5"
+      "@types/graceful-fs" "^4.1.2"
+      "@types/node" "*"
+      anymatch "^3.0.3"
+      fb-watchman "^2.0.0"
+      graceful-fs "^4.2.4"
+      jest-regex-util "^27.0.6"
+      jest-serializer "^27.0.6"
+      jest-util "^27.3.1"
+      jest-worker "^27.3.1"
+      micromatch "^4.0.4"
+      walker "^1.0.7"
+    optionalDependencies:
+      fsevents "^2.3.2"
+  
   jest-jasmine2@^26.6.3:
     version "26.6.3"
     resolved "https://registry.npmjs.org/jest-jasmine2/-/jest-jasmine2-26.6.3.tgz"
@@ -3602,6 +3759,11 @@ Lockfile:
     version "26.0.0"
     resolved "https://registry.npmjs.org/jest-regex-util/-/jest-regex-util-26.0.0.tgz"
     integrity sha512-Gv3ZIs/nA48/Zvjrl34bf+oD76JHiGDUxNOVgUjh3j890sblXryjY4rss71fPtD/njchl6PSE2hIhvyWa1eT0A==
+  
+  jest-regex-util@^27.0.6:
+    version "27.0.6"
+    resolved "https://registry.yarnpkg.com/jest-regex-util/-/jest-regex-util-27.0.6.tgz#02e112082935ae949ce5d13b2675db3d8c87d9c5"
+    integrity sha512-SUhPzBsGa1IKm8hx2F4NfTGGp+r7BXJ4CulsZ1k2kI+mGLG+lxGrs76veN2LF/aUdGosJBzKgXmNCw+BzFqBDQ==
   
   jest-resolve-dependencies@^26.6.3:
     version "26.6.3"
@@ -3693,6 +3855,14 @@ Lockfile:
       "@types/node" "*"
       graceful-fs "^4.2.4"
   
+  jest-serializer@^27.0.6:
+    version "27.0.6"
+    resolved "https://registry.yarnpkg.com/jest-serializer/-/jest-serializer-27.0.6.tgz#93a6c74e0132b81a2d54623251c46c498bb5bec1"
+    integrity sha512-PtGdVK9EGC7dsaziskfqaAPib6wTViY3G8E5wz9tLVPhHyiDNTZn/xjZ4khAw+09QkoOVpn7vF5nPSN6dtBexA==
+    dependencies:
+      "@types/node" "*"
+      graceful-fs "^4.2.4"
+  
   jest-snapshot@^26.6.2:
     version "26.6.2"
     resolved "https://registry.npmjs.org/jest-snapshot/-/jest-snapshot-26.6.2.tgz"
@@ -3727,6 +3897,18 @@ Lockfile:
       is-ci "^2.0.0"
       micromatch "^4.0.2"
   
+  jest-util@^27.0.0, jest-util@^27.3.1:
+    version "27.3.1"
+    resolved "https://registry.yarnpkg.com/jest-util/-/jest-util-27.3.1.tgz#a58cdc7b6c8a560caac9ed6bdfc4e4ff23f80429"
+    integrity sha512-8fg+ifEH3GDryLQf/eKZck1DEs2YuVPBCMOaHQxVVLmQwl/CDhWzrvChTX4efLZxGrw+AA0mSXv78cyytBt/uw==
+    dependencies:
+      "@jest/types" "^27.2.5"
+      "@types/node" "*"
+      chalk "^4.0.0"
+      ci-info "^3.2.0"
+      graceful-fs "^4.2.4"
+      picomatch "^2.2.3"
+  
   jest-validate@^26.6.2:
     version "26.6.2"
     resolved "https://registry.npmjs.org/jest-validate/-/jest-validate-26.6.2.tgz"
@@ -3760,6 +3942,15 @@ Lockfile:
       "@types/node" "*"
       merge-stream "^2.0.0"
       supports-color "^7.0.0"
+  
+  jest-worker@^27.3.1:
+    version "27.3.1"
+    resolved "https://registry.yarnpkg.com/jest-worker/-/jest-worker-27.3.1.tgz#0def7feae5b8042be38479799aeb7b5facac24b2"
+    integrity sha512-ks3WCzsiZaOPJl/oMsDjaf0TRiSv7ctNgs0FqRr2nARsovz6AWWy4oLElwcquGSz692DzgZQrCLScPNs5YlC4g==
+    dependencies:
+      "@types/node" "*"
+      merge-stream "^2.0.0"
+      supports-color "^8.0.0"
   
   jest@^26.6.3:
     version "26.6.3"
@@ -3989,6 +4180,11 @@ Lockfile:
     resolved "https://registry.npmjs.org/lodash.flatten/-/lodash.flatten-4.4.0.tgz"
     integrity sha1-8xwiIlqWMtK7+OSt2+8kCqdlph8=
   
+  lodash.memoize@4.x:
+    version "4.1.2"
+    resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
+    integrity sha1-vMbEmkKihA7Zl/Mj6tpezRguC/4=
+  
   lodash.toarray@^4.4.0:
     version "4.4.0"
     resolved "https://registry.npmjs.org/lodash.toarray/-/lodash.toarray-4.4.0.tgz"
@@ -4056,6 +4252,11 @@ Lockfile:
     dependencies:
       object-visit "^1.0.0"
   
+  maska@^1.4.5:
+    version "1.4.5"
+    resolved "https://registry.npmjs.org/maska/-/maska-1.4.5.tgz"
+    integrity sha512-RTtysWQGipkQNC/Baq4/VsWIh4pAw9TRXDZhqSyrrIaGCXFRkfXORWu7d6Jj1Xbnp7rE0Gnnbwx5ylfLRfCdTA==
+  
   merge-source-map@^1.1.0:
     version "1.1.0"
     resolved "https://registry.yarnpkg.com/merge-source-map/-/merge-source-map-1.1.0.tgz"
@@ -4099,6 +4300,14 @@ Lockfile:
     dependencies:
       braces "^3.0.1"
       picomatch "^2.0.5"
+  
+  micromatch@^4.0.4:
+    version "4.0.4"
+    resolved "https://registry.yarnpkg.com/micromatch/-/micromatch-4.0.4.tgz#896d519dfe9db25fce94ceb7a500919bf881ebf9"
+    integrity sha512-pRmzw/XUcwXGpD9aI9q/0XOwLNygjETJ8y0ao0wdqprrzDa4YnxLcz7fQRZr8voh8V10kGhABbNcHVk5wHgWwg==
+    dependencies:
+      braces "^3.0.1"
+      picomatch "^2.2.3"
   
   mime-db@1.46.0:
     version "1.46.0"
@@ -4164,10 +4373,15 @@ Lockfile:
     resolved "https://registry.npmjs.org/ms/-/ms-2.1.2.tgz"
     integrity sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==
   
-  nanoid@^3.1.22:
-    version "3.1.22"
-    resolved "https://registry.yarnpkg.com/nanoid/-/nanoid-3.1.22.tgz"
-    integrity sha512-/2ZUaJX2ANuLtTvqTlgqBQNJoQO398KyJgZloL0PZkC0dpysjncRUPsFe3DUPzz/y3h+u7C46np8RMuvF3jsSQ==
+  nanocolors@^0.2.12, nanocolors@^0.2.2:
+    version "0.2.12"
+    resolved "https://registry.npmjs.org/nanocolors/-/nanocolors-0.2.12.tgz"
+    integrity sha512-SFNdALvzW+rVlzqexid6epYdt8H9Zol7xDoQarioEFcFN0JHo4CYNztAxmtfgGTVRCmFlEOqqhBpoFGKqSAMug==
+  
+  nanoid@^3.1.25:
+    version "3.1.28"
+    resolved "https://registry.npmjs.org/nanoid/-/nanoid-3.1.28.tgz"
+    integrity sha512-gSu9VZ2HtmoKYe/lmyPFES5nknFrHa+/DT9muUFWFMi6Jh9E1I7bkvlQ8xxf1Kos9pi9o8lBnIOkatMhKX/YUw==
   
   nanomatch@^1.2.9:
     version "1.2.13"
@@ -4225,10 +4439,10 @@ Lockfile:
       uuid "^8.3.0"
       which "^2.0.2"
   
-  node-releases@^1.1.70:
-    version "1.1.71"
-    resolved "https://registry.npmjs.org/node-releases/-/node-releases-1.1.71.tgz"
-    integrity sha512-zR6HoT6LrLCRBwukmrVbHv0EpEQjksO6GmFcZQQuCAy139BEsoVKPYnf3jongYW83fAa1torLGYwxxky/p28sg==
+  node-releases@^1.1.76:
+    version "1.1.77"
+    resolved "https://registry.npmjs.org/node-releases/-/node-releases-1.1.77.tgz"
+    integrity sha512-rB1DUFUNAN4Gn9keO2K1efO35IDK7yKHCdCaIMvFO7yUYmmZYeDjnGKle26G4rwj+LKRQpjyUUvMkPglwGCYNQ==
   
   normalize-package-data@^2.5.0:
     version "2.5.0"
@@ -4444,9 +4658,9 @@ Lockfile:
     integrity sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q==
   
   path-parse@^1.0.6:
-    version "1.0.6"
-    resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz"
-    integrity sha512-GSmOT2EbHrINBf9SR7CDELwlJ8AENk3Qn7OikK4nFYAu3Ote2+JYNVvkpAEQm3/TLNEJFD/xZJjzyxg3KBWOzw==
+    version "1.0.7"
+    resolved "https://registry.npmjs.org/path-parse/-/path-parse-1.0.7.tgz"
+    integrity sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==
   
   path-type@^4.0.0:
     version "4.0.0"
@@ -4462,6 +4676,11 @@ Lockfile:
     version "2.2.2"
     resolved "https://registry.npmjs.org/picomatch/-/picomatch-2.2.2.tgz"
     integrity sha512-q0M/9eZHzmr0AulXyPwNfZjtwZ/RBZlbN3K3CErVrk50T2ASYI7Bye0EvekFY3IP1Nt2DHu0re+V2ZHIpMkuWg==
+  
+  picomatch@^2.2.3:
+    version "2.3.0"
+    resolved "https://registry.yarnpkg.com/picomatch/-/picomatch-2.3.0.tgz#f1f061de8f6a4bf022892e2d128234fb98302972"
+    integrity sha512-lY1Q/PiJGC2zOv/z391WOTD+Z02bCgsFfvxoXXf6h7kv9o+WmsmzYqrAwY63sNgOxE4xEdq0WyUnXfKeBrSvYw==
   
   pirates@^4.0.1:
     version "4.0.1"
@@ -4579,13 +4798,13 @@ Lockfile:
       supports-color "^5.4.0"
   
   postcss@^8.1.10, postcss@^8.1.6, postcss@^8.2.1, postcss@^8.2.9:
-    version "8.2.9"
-    resolved "https://registry.yarnpkg.com/postcss/-/postcss-8.2.9.tgz"
-    integrity sha512-b+TmuIL4jGtCHtoLi+G/PisuIl9avxs8IZMSmlABRwNz5RLUUACrC+ws81dcomz1nRezm5YPdXiMEzBEKgYn+Q==
+    version "8.3.8"
+    resolved "https://registry.npmjs.org/postcss/-/postcss-8.3.8.tgz"
+    integrity sha512-GT5bTjjZnwDifajzczOC+r3FI3Cu+PgPvrsjhQdRqa2kTJ4968/X9CUce9xttIB0xOs5c6xf0TCWZo/y9lF6bA==
     dependencies:
-      colorette "^1.2.2"
-      nanoid "^3.1.22"
-      source-map "^0.6.1"
+      nanocolors "^0.2.2"
+      nanoid "^3.1.25"
+      source-map-js "^0.6.2"
   
   prelude-ls@^1.2.1:
     version "1.2.1"
@@ -4623,6 +4842,11 @@ Lockfile:
     version "1.0.3"
     resolved "https://registry.npmjs.org/pretty-hrtime/-/pretty-hrtime-1.0.3.tgz"
     integrity sha1-t+PqQkNaTJsnWdmeDyAesZWALuE=
+  
+  primevue@^3.7.1:
+    version "3.7.1"
+    resolved "https://registry.npmjs.org/primevue/-/primevue-3.7.1.tgz"
+    integrity sha512-wL6TGE5zQfVySVblM9bq6VwFqPmQwd2uDGxn8FCDI2MPXEZ7JlOrT3BBeLCM/RJrIy1jAYq1gNTdVGe+6Zljgg==
   
   process-nextick-args@~2.0.0:
     version "2.0.1"
@@ -5072,6 +5296,16 @@ Lockfile:
       astral-regex "^2.0.0"
       is-fullwidth-code-point "^3.0.0"
   
+  "slifer@github:jserranojunior/slifer#0.0.21":
+    version "0.0.21"
+    resolved "https://codeload.github.com/jserranojunior/slifer/tar.gz/e2772806611332889d8a0ae9c465b5c6173a2b89"
+    dependencies:
+      babel-jest "^27.3.1"
+      element-plus "*"
+      ts-jest "^27.0.7"
+      vue "^3.0.5"
+      vue-router "^4.0.3"
+  
   snapdragon-node@^2.0.1:
     version "2.1.1"
     resolved "https://registry.npmjs.org/snapdragon-node/-/snapdragon-node-2.1.1.tgz"
@@ -5102,7 +5336,12 @@ Lockfile:
       source-map-resolve "^0.5.0"
       use "^3.1.0"
   
-  source-map-resolve@^0.5.0:
+  source-map-js@^0.6.2:
+    version "0.6.2"
+    resolved "https://registry.npmjs.org/source-map-js/-/source-map-js-0.6.2.tgz"
+    integrity sha512-/3GptzWzu0+0MBQFrDKzw/DvvMTUORvgY6k6jd/VS6iCR4RDTKWH6v6WPwQoUO8667uQEf9Oe38DxAYWY5F/Ug==
+  
+  source-map-resolve@^0.5.0, source-map-resolve@^0.5.2:
     version "0.5.3"
     resolved "https://registry.npmjs.org/source-map-resolve/-/source-map-resolve-0.5.3.tgz"
     integrity sha512-Htz+RnsXWk5+P2slx5Jh3Q66vhQj1Cllm0zvnaY98+NFx+Dv2CF/f5O/t8x+KaNdrdIAsruNzoh/KpialbqAnw==
@@ -5255,6 +5494,11 @@ Lockfile:
     dependencies:
       ansi-regex "^5.0.0"
   
+  strip-bom@^3.0.0:
+    version "3.0.0"
+    resolved "https://registry.npmjs.org/strip-bom/-/strip-bom-3.0.0.tgz"
+    integrity sha1-IzTBjpx1n3vdVv3vfprj1YjmjtM=
+  
   strip-bom@^4.0.0:
     version "4.0.0"
     resolved "https://registry.npmjs.org/strip-bom/-/strip-bom-4.0.0.tgz"
@@ -5269,6 +5513,11 @@ Lockfile:
     version "2.0.0"
     resolved "https://registry.npmjs.org/strip-final-newline/-/strip-final-newline-2.0.0.tgz"
     integrity sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA==
+  
+  strip-json-comments@^2.0.0:
+    version "2.0.1"
+    resolved "https://registry.npmjs.org/strip-json-comments/-/strip-json-comments-2.0.1.tgz"
+    integrity sha1-PFMZQukIwml8DsNEhYwobHygpgo=
   
   strip-json-comments@^3.1.0, strip-json-comments@^3.1.1:
     version "3.1.1"
@@ -5286,6 +5535,13 @@ Lockfile:
     version "7.2.0"
     resolved "https://registry.npmjs.org/supports-color/-/supports-color-7.2.0.tgz"
     integrity sha512-qpCAvRl9stuOHveKsn7HncJRvv501qIacKzQlO/+Lwxc9+0q2wLyv4Dfvt80/DPn2pqOBsJdDiogXGR9+OvwRw==
+    dependencies:
+      has-flag "^4.0.0"
+  
+  supports-color@^8.0.0:
+    version "8.1.1"
+    resolved "https://registry.yarnpkg.com/supports-color/-/supports-color-8.1.1.tgz#cd6fc17e28500cff56c1b86c0a7fd4a54a73005c"
+    integrity sha512-MpUEN2OodtUzxvKQl72cUF7RQ5EiHsGvSsVG0ia9c5RbWGL2CI4C7EpPS8UTBIplnlzZiNuV56w+FuNxy3ty2Q==
     dependencies:
       has-flag "^4.0.0"
   
@@ -5456,6 +5712,30 @@ Lockfile:
       mkdirp "1.x"
       semver "7.x"
       yargs-parser "20.x"
+  
+  ts-jest@^27.0.7:
+    version "27.0.7"
+    resolved "https://registry.yarnpkg.com/ts-jest/-/ts-jest-27.0.7.tgz#fb7c8c8cb5526ab371bc1b23d06e745652cca2d0"
+    integrity sha512-O41shibMqzdafpuP+CkrOL7ykbmLh+FqQrXEmV9CydQ5JBk0Sj0uAEF5TNNe94fZWKm3yYvWa/IbyV4Yg1zK2Q==
+    dependencies:
+      bs-logger "0.x"
+      fast-json-stable-stringify "2.x"
+      jest-util "^27.0.0"
+      json5 "2.x"
+      lodash.memoize "4.x"
+      make-error "1.x"
+      semver "7.x"
+      yargs-parser "20.x"
+  
+  tsconfig@^7.0.0:
+    version "7.0.0"
+    resolved "https://registry.npmjs.org/tsconfig/-/tsconfig-7.0.0.tgz"
+    integrity sha512-vZXmzPrL+EmC4T/4rVlT2jNVMWCi/O4DIiSj3UHg1OE5kCKbk4mfrXc6dZksLgRM/TZlKnousKH9bbTazUWRRw==
+    dependencies:
+      "@types/strip-bom" "^3.0.0"
+      "@types/strip-json-comments" "0.0.30"
+      strip-bom "^3.0.0"
+      strip-json-comments "^2.0.0"
   
   tslib@^1.8.1:
     version "1.14.1"
@@ -5667,6 +5947,11 @@ Lockfile:
       core-util-is "1.0.2"
       extsprintf "^1.2.0"
   
+  vite-plugin-env-compatible@^0.2.1:
+    version "0.2.1"
+    resolved "https://registry.npmjs.org/vite-plugin-env-compatible/-/vite-plugin-env-compatible-0.2.1.tgz"
+    integrity sha512-1tVTq9ID4Coutj1ri2wY1xTfi5E2TU9DZEl/yM24exR85gFecfjHW+gfpCc45ikN6uRWWO2pGJiuFuqZetNHWQ==
+  
   vite@^2.1.5:
     version "2.1.5"
     resolved "https://registry.yarnpkg.com/vite/-/vite-2.1.5.tgz"
@@ -5690,6 +5975,17 @@ Lockfile:
       espree "^6.2.1"
       esquery "^1.4.0"
       lodash "^4.17.15"
+  
+  vue-jest@^5.0.0-alpha.8:
+    version "5.0.0-alpha.8"
+    resolved "https://registry.npmjs.org/vue-jest/-/vue-jest-5.0.0-alpha.8.tgz"
+    integrity sha512-4FqH69T6X6rOglrEui/mDWvOTGB9ammmCXLVdS4s524D4Emx8fBC4sKAPFAUZfbWpYh/7i7xWoPwF4agfyGWwA==
+    dependencies:
+      "@babel/plugin-transform-modules-commonjs" "^7.2.0"
+      chalk "^2.1.0"
+      convert-source-map "^1.6.0"
+      extract-from-css "^0.4.4"
+      tsconfig "^7.0.0"
   
   vue-router@^4.0.3:
     version "4.0.5"
@@ -5813,9 +6109,9 @@ Lockfile:
       typedarray-to-buffer "^3.1.5"
   
   ws@^7.4.4:
-    version "7.4.4"
-    resolved "https://registry.npmjs.org/ws/-/ws-7.4.4.tgz"
-    integrity sha512-Qm8k8ojNQIMx7S+Zp8u/uHOx7Qazv3Yv4q68MiWWWOJhiwG5W3x7iqmRtJo8xxrciZUY4vRxUTJCKuRnF28ZZw==
+    version "7.5.5"
+    resolved "https://registry.npmjs.org/ws/-/ws-7.5.5.tgz"
+    integrity sha512-BAkMFcAzl8as1G/hArkxOxq3G7pjUqQ3gzYbLL0/5zNkph70e+lCoxBGnm6AW1+/aiNeV4fnKqZ8m4GZewmH2w==
   
   xml-name-validator@^3.0.0:
     version "3.0.0"
